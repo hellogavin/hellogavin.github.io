@@ -61,143 +61,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2014-12-11-CsharpName" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/12/11/2014-12-11-CsharpName/" class="article-date">
-  <time datetime="2014-12-11T06:26:00.000Z" itemprop="datePublished">2014-12-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/coding/">coding</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/11/2014-12-11-CsharpName/">C#命名规则</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>####1. 用Pascal规则来命名方法和类。</p>
-<pre><code>public class DataGrid 
-{ 
-  public void DataBind() 
-  { 
-  } 
-} 
-</code></pre><p>####2. private、protected以及方法参数使用 Camel，public使用Pascal(变量尽量使用属性).</p>
-<pre><code>public class Product 
-{ 
-  public string ProductUrl;
-  private string _productId; 
-  protected string _productName; 
-  public void AddProduct(string productId,string productName) 
-  { 
-  } 
-} 
-</code></pre><p>####3. 接口的名称加前缀 “I”。</p>
-<pre><code>public interface IConvertible 
-{ 
-  byte ToByte(); 
-} 
-</code></pre><p>####4. 方法注释///</p>
-<pre><code>/// &lt;summary&gt;
-/// 
-/// &lt;/summary&gt;
-</code></pre><p>####5. 自定义的属性以“Attribute”结尾。</p>
-<pre><code>public class TableAttribute:Attribute 
-{ 
-} 
-</code></pre><p>####6. 自定义的异常以Exception结尾。</p>
-<pre><code>public class NullEmptyException:Exception 
-{ 
-} 
-</code></pre><p>####7. 方法的命名。一般将其命名为动宾短语。</p>
-<pre><code>public class File 
-{ 
-  public void CreateFile(string filePath) 
-  { 
-  } 
-  public void GetPath(string path) 
-  { 
-  } 
-} 
-</code></pre><p>####8. 局部变量的名称要有意义。 不要用x，y，z等等，用For循环变量中可使用i, j, k, l, m, n。</p>
-<pre><code>public class User 
-{ 
-  public void GetUser() 
-  { 
-    string[] userIds={&quot;ziv&quot;,&quot;zorywa&quot;,&quot;zlh&quot;}; 
-    for(int i=0,k=userIds.Length;i&lt;k;i++) 
-    { 
-    } 
-  } 
-} 
-</code></pre><p>####9. 所有的成员变量声明在类的顶端。</p>
-<pre><code>public class Product 
-{ 
-  private string _productId; 
-  private string _productName; 
-  public void AddProduct(string productId,string productName) 
-  { 
-  } 
-} 
-</code></pre><p>####10. 用有意义的名字命名namespace，如：公司名、产品名。</p>
-<pre><code>namespace Zivsoft//公司命名 
-{ 
-} 
-namespace ERP//产品命名 
-{ 
-} 
-</code></pre><p>####11． 建议局部变量在最接近使用它时再声明。</p>
-<p>####12. 使用某个控件的值时，尽量命名局部变量。</p>
-<pre><code>public string GetTitle() 
-{ 
-  string title=lbl_Title.Text; 
-  return title; 
-} 
-</code></pre><p>####14. 把引用的系统的namespace和自定义或第三方的用一个换行把它们分开。</p>
-<pre><code>using System; 
-using System.Web.UI; 
-using System.Windows.Forms; 
-using CSharpCode; 
-using CSharpCode.Style; 
-</code></pre><p>####15. 文件名要能反应类的内容，最好是和类同名，一个文件中一个类或一组关连类。</p>
-<p>####16. 目录结构中要反应出namespace的层次。</p>
-<p>####17. 大括号”{“要新起一行。</p>
-<pre><code>public Sample() 
-{ 
-// 
-// TODO: 在此处添加构造函数逻辑 
-// 
-}
-</code></pre><p>####18. 代码块控制 #region  #endregion ####</p>
-<p>— End —</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hellogavin88.github.io/2014/12/11/2014-12-11-CsharpName/" data-id="ciipwi1so0018mwvm6awbmicg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-2014-12-11-UnityVs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/12/11/2014-12-11-UnityVs/" class="article-date">
@@ -225,23 +88,15 @@ using CSharpCode.Style;
     <div class="article-entry" itemprop="articleBody">
       
         <p>大家可以从这下载最新版的unity vs。 UnityVs1.81下载 <a><a href="http://yunpan.cn/cfFFWTsS97ThP" target="_blank" rel="external">http://yunpan.cn/cfFFWTsS97ThP</a></a>  提取码 6621</p>
-<p>####1. 安装unity vs。首先我们打开我们下载的unity vs。然后就会看见里面有3个文件，我们双击UnityVS 2013-1.8.1.msi。进行安装，在其过程狂点击下一步就可以，直到点击finish。安装完成。</p>
-<p><img src="/../../../../../static/images/unityVs/1.png" alt="1"></p>
-<p>####2. 我们先找到你安装visual studio 2012或者visual studio 2013的目录。<br>(<em>**</em>\Microsoft Visual Studio12.0\Common7\IDE\Extensions\SyntaxTree\UnityVS) 。<br>例如我是安装在C:\ProgramFiles(x86)\MicrosoftVisualStudio12.0\Common7\IDE\Extensions\SyntaxTree\UnityVS</p>
-<p>####3. 从我们刚下载的unity vs里面，找到SyntaxTree.VisualStudio.Packages.dll。（上面所说的3个文件的其中一个）。 然后把这个文件粘贴在步骤2中的…..\UnityVS文件夹中。</p>
-<p><img src="/../../../../../static/images/unityVs/2.png" alt="2"></p>
-<p>####4. 然后我们打开unity,新建一个工程。然后我们右键导入一个unity vs2013这个包（如果你以上操作都正确的话就能在右键后看见unity vs 2013这个包）</p>
-<p><img src="/../../../../../static/images/unityVs/3.png" alt="3"></p>
-<p>####5. 然后我们修改下打开脚本的方式（其实这一般安装正确后会自动选择unityvs 2013去打开的这里我说下手动改变方式）。打开Edit—-Preferences，选中External Tools ，选择其unityvs OpenFile 。如图：</p>
-<p><img src="/../../../../../static/images/unityVs/4.png" alt="4"><br><img src="/../../../../../static/images/unityVs/5.png" alt="5"></p>
-<p>####6. 然后新建一个脚本，我这取名为DebugTest.cs。来说明如何使用unity vs来断点调试。</p>
-<p><img src="/../../../../../static/images/unityVs/7.png" alt="7"></p>
-<p>####7. 当我们双击的打开脚本的时候会弹出一个提示框，如下:</p>
-<p><img src="/../../../../../static/images/unityVs/8.png" alt="8"></p>
-<p>####8. 我们打开刚才下载的，还记得我上面强调有3个文件吧，好了，我们打开key.txt。然后全选复制其内容，把它粘贴上去，点击ok,稍等片刻，就可以了。如图：</p>
-<p><img src="/../../../../../static/images/unityVs/9.png" alt="9"></p>
-<p>####9. 我们现在可以写脚本了，我在DebugTest.cs写的内容很简单，就是测试从1+…10。  内容如下:</p>
-<pre><code>using UnityEngine;
+<h4 id="1-__u5B89_u88C5unity_vs_u3002_u9996_u5148_u6211_u4EEC_u6253_u5F00_u6211_u4EEC_u4E0B_u8F7D_u7684unity_vs_u3002_u7136_u540E_u5C31_u4F1A_u770B_u89C1_u91CC_u9762_u67093_u4E2A_u6587_u4EF6_uFF0C_u6211_u4EEC_u53CC_u51FBUnityVS_2013-1-8-1-msi_u3002_u8FDB_u884C_u5B89_u88C5_uFF0C_u5728_u5176_u8FC7_u7A0B_u72C2_u70B9_u51FB_u4E0B_u4E00_u6B65_u5C31_u53EF_u4EE5_uFF0C_u76F4_u5230_u70B9_u51FBfinish_u3002_u5B89_u88C5_u5B8C_u6210_u3002"><a href="#1-__u5B89_u88C5unity_vs_u3002_u9996_u5148_u6211_u4EEC_u6253_u5F00_u6211_u4EEC_u4E0B_u8F7D_u7684unity_vs_u3002_u7136_u540E_u5C31_u4F1A_u770B_u89C1_u91CC_u9762_u67093_u4E2A_u6587_u4EF6_uFF0C_u6211_u4EEC_u53CC_u51FBUnityVS_2013-1-8-1-msi_u3002_u8FDB_u884C_u5B89_u88C5_uFF0C_u5728_u5176_u8FC7_u7A0B_u72C2_u70B9_u51FB_u4E0B_u4E00_u6B65_u5C31_u53EF_u4EE5_uFF0C_u76F4_u5230_u70B9_u51FBfinish_u3002_u5B89_u88C5_u5B8C_u6210_u3002" class="headerlink" title="1. 安装unity vs。首先我们打开我们下载的unity vs。然后就会看见里面有3个文件，我们双击UnityVS 2013-1.8.1.msi。进行安装，在其过程狂点击下一步就可以，直到点击finish。安装完成。"></a>1. 安装unity vs。首先我们打开我们下载的unity vs。然后就会看见里面有3个文件，我们双击UnityVS 2013-1.8.1.msi。进行安装，在其过程狂点击下一步就可以，直到点击finish。安装完成。</h4><p><img src="/../../../../../static/images/unityVs/1.png" alt="1"></p>
+<h4 id="2-__u6211_u4EEC_u5148_u627E_u5230_u4F60_u5B89_u88C5visual_studio_2012_u6216_u8005visual_studio_2013_u7684_u76EE_u5F55_u3002"><a href="#2-__u6211_u4EEC_u5148_u627E_u5230_u4F60_u5B89_u88C5visual_studio_2012_u6216_u8005visual_studio_2013_u7684_u76EE_u5F55_u3002" class="headerlink" title="2. 我们先找到你安装visual studio 2012或者visual studio 2013的目录。"></a>2. 我们先找到你安装visual studio 2012或者visual studio 2013的目录。</h4><p>(<em>**</em>\Microsoft Visual Studio12.0\Common7\IDE\Extensions\SyntaxTree\UnityVS) 。<br>例如我是安装在C:\ProgramFiles(x86)\MicrosoftVisualStudio12.0\Common7\IDE\Extensions\SyntaxTree\UnityVS</p>
+<h4 id="3-__u4ECE_u6211_u4EEC_u521A_u4E0B_u8F7D_u7684unity_vs_u91CC_u9762_uFF0C_u627E_u5230SyntaxTree-VisualStudio-Packages-dll_u3002_uFF08_u4E0A_u9762_u6240_u8BF4_u76843_u4E2A_u6587_u4EF6_u7684_u5176_u4E2D_u4E00_u4E2A_uFF09_u3002__u7136_u540E_u628A_u8FD9_u4E2A_u6587_u4EF6_u7C98_u8D34_u5728_u6B65_u9AA42_u4E2D_u7684_u2026-_5CUnityVS_u6587_u4EF6_u5939_u4E2D_u3002"><a href="#3-__u4ECE_u6211_u4EEC_u521A_u4E0B_u8F7D_u7684unity_vs_u91CC_u9762_uFF0C_u627E_u5230SyntaxTree-VisualStudio-Packages-dll_u3002_uFF08_u4E0A_u9762_u6240_u8BF4_u76843_u4E2A_u6587_u4EF6_u7684_u5176_u4E2D_u4E00_u4E2A_uFF09_u3002__u7136_u540E_u628A_u8FD9_u4E2A_u6587_u4EF6_u7C98_u8D34_u5728_u6B65_u9AA42_u4E2D_u7684_u2026-_5CUnityVS_u6587_u4EF6_u5939_u4E2D_u3002" class="headerlink" title="3. 从我们刚下载的unity vs里面，找到SyntaxTree.VisualStudio.Packages.dll。（上面所说的3个文件的其中一个）。 然后把这个文件粘贴在步骤2中的…..\UnityVS文件夹中。"></a>3. 从我们刚下载的unity vs里面，找到SyntaxTree.VisualStudio.Packages.dll。（上面所说的3个文件的其中一个）。 然后把这个文件粘贴在步骤2中的…..\UnityVS文件夹中。</h4><p><img src="/../../../../../static/images/unityVs/2.png" alt="2"></p>
+<h4 id="4-__u7136_u540E_u6211_u4EEC_u6253_u5F00unity_2C_u65B0_u5EFA_u4E00_u4E2A_u5DE5_u7A0B_u3002_u7136_u540E_u6211_u4EEC_u53F3_u952E_u5BFC_u5165_u4E00_u4E2Aunity_vs2013_u8FD9_u4E2A_u5305_uFF08_u5982_u679C_u4F60_u4EE5_u4E0A_u64CD_u4F5C_u90FD_u6B63_u786E_u7684_u8BDD_u5C31_u80FD_u5728_u53F3_u952E_u540E_u770B_u89C1unity_vs_2013_u8FD9_u4E2A_u5305_uFF09"><a href="#4-__u7136_u540E_u6211_u4EEC_u6253_u5F00unity_2C_u65B0_u5EFA_u4E00_u4E2A_u5DE5_u7A0B_u3002_u7136_u540E_u6211_u4EEC_u53F3_u952E_u5BFC_u5165_u4E00_u4E2Aunity_vs2013_u8FD9_u4E2A_u5305_uFF08_u5982_u679C_u4F60_u4EE5_u4E0A_u64CD_u4F5C_u90FD_u6B63_u786E_u7684_u8BDD_u5C31_u80FD_u5728_u53F3_u952E_u540E_u770B_u89C1unity_vs_2013_u8FD9_u4E2A_u5305_uFF09" class="headerlink" title="4. 然后我们打开unity,新建一个工程。然后我们右键导入一个unity vs2013这个包（如果你以上操作都正确的话就能在右键后看见unity vs 2013这个包）"></a>4. 然后我们打开unity,新建一个工程。然后我们右键导入一个unity vs2013这个包（如果你以上操作都正确的话就能在右键后看见unity vs 2013这个包）</h4><p><img src="/../../../../../static/images/unityVs/3.png" alt="3"></p>
+<h4 id="5-__u7136_u540E_u6211_u4EEC_u4FEE_u6539_u4E0B_u6253_u5F00_u811A_u672C_u7684_u65B9_u5F0F_uFF08_u5176_u5B9E_u8FD9_u4E00_u822C_u5B89_u88C5_u6B63_u786E_u540E_u4F1A_u81EA_u52A8_u9009_u62E9unityvs_2013_u53BB_u6253_u5F00_u7684_u8FD9_u91CC_u6211_u8BF4_u4E0B_u624B_u52A8_u6539_u53D8_u65B9_u5F0F_uFF09_u3002_u6253_u5F00Edit_u2014-Preferences_uFF0C_u9009_u4E2DExternal_Tools__uFF0C_u9009_u62E9_u5176unityvs_OpenFile__u3002_u5982_u56FE_uFF1A"><a href="#5-__u7136_u540E_u6211_u4EEC_u4FEE_u6539_u4E0B_u6253_u5F00_u811A_u672C_u7684_u65B9_u5F0F_uFF08_u5176_u5B9E_u8FD9_u4E00_u822C_u5B89_u88C5_u6B63_u786E_u540E_u4F1A_u81EA_u52A8_u9009_u62E9unityvs_2013_u53BB_u6253_u5F00_u7684_u8FD9_u91CC_u6211_u8BF4_u4E0B_u624B_u52A8_u6539_u53D8_u65B9_u5F0F_uFF09_u3002_u6253_u5F00Edit_u2014-Preferences_uFF0C_u9009_u4E2DExternal_Tools__uFF0C_u9009_u62E9_u5176unityvs_OpenFile__u3002_u5982_u56FE_uFF1A" class="headerlink" title="5. 然后我们修改下打开脚本的方式（其实这一般安装正确后会自动选择unityvs 2013去打开的这里我说下手动改变方式）。打开Edit—-Preferences，选中External Tools ，选择其unityvs OpenFile 。如图："></a>5. 然后我们修改下打开脚本的方式（其实这一般安装正确后会自动选择unityvs 2013去打开的这里我说下手动改变方式）。打开Edit—-Preferences，选中External Tools ，选择其unityvs OpenFile 。如图：</h4><p><img src="/../../../../../static/images/unityVs/4.png" alt="4"><br><img src="/../../../../../static/images/unityVs/5.png" alt="5"></p>
+<h4 id="6-__u7136_u540E_u65B0_u5EFA_u4E00_u4E2A_u811A_u672C_uFF0C_u6211_u8FD9_u53D6_u540D_u4E3ADebugTest-cs_u3002_u6765_u8BF4_u660E_u5982_u4F55_u4F7F_u7528unity_vs_u6765_u65AD_u70B9_u8C03_u8BD5_u3002"><a href="#6-__u7136_u540E_u65B0_u5EFA_u4E00_u4E2A_u811A_u672C_uFF0C_u6211_u8FD9_u53D6_u540D_u4E3ADebugTest-cs_u3002_u6765_u8BF4_u660E_u5982_u4F55_u4F7F_u7528unity_vs_u6765_u65AD_u70B9_u8C03_u8BD5_u3002" class="headerlink" title="6. 然后新建一个脚本，我这取名为DebugTest.cs。来说明如何使用unity vs来断点调试。"></a>6. 然后新建一个脚本，我这取名为DebugTest.cs。来说明如何使用unity vs来断点调试。</h4><p><img src="/../../../../../static/images/unityVs/7.png" alt="7"></p>
+<h4 id="7-__u5F53_u6211_u4EEC_u53CC_u51FB_u7684_u6253_u5F00_u811A_u672C_u7684_u65F6_u5019_u4F1A_u5F39_u51FA_u4E00_u4E2A_u63D0_u793A_u6846_uFF0C_u5982_u4E0B_3A"><a href="#7-__u5F53_u6211_u4EEC_u53CC_u51FB_u7684_u6253_u5F00_u811A_u672C_u7684_u65F6_u5019_u4F1A_u5F39_u51FA_u4E00_u4E2A_u63D0_u793A_u6846_uFF0C_u5982_u4E0B_3A" class="headerlink" title="7. 当我们双击的打开脚本的时候会弹出一个提示框，如下:"></a>7. 当我们双击的打开脚本的时候会弹出一个提示框，如下:</h4><p><img src="/../../../../../static/images/unityVs/8.png" alt="8"></p>
+<h4 id="8-__u6211_u4EEC_u6253_u5F00_u521A_u624D_u4E0B_u8F7D_u7684_uFF0C_u8FD8_u8BB0_u5F97_u6211_u4E0A_u9762_u5F3A_u8C03_u67093_u4E2A_u6587_u4EF6_u5427_uFF0C_u597D_u4E86_uFF0C_u6211_u4EEC_u6253_u5F00key-txt_u3002_u7136_u540E_u5168_u9009_u590D_u5236_u5176_u5185_u5BB9_uFF0C_u628A_u5B83_u7C98_u8D34_u4E0A_u53BB_uFF0C_u70B9_u51FBok_2C_u7A0D_u7B49_u7247_u523B_uFF0C_u5C31_u53EF_u4EE5_u4E86_u3002_u5982_u56FE_uFF1A"><a href="#8-__u6211_u4EEC_u6253_u5F00_u521A_u624D_u4E0B_u8F7D_u7684_uFF0C_u8FD8_u8BB0_u5F97_u6211_u4E0A_u9762_u5F3A_u8C03_u67093_u4E2A_u6587_u4EF6_u5427_uFF0C_u597D_u4E86_uFF0C_u6211_u4EEC_u6253_u5F00key-txt_u3002_u7136_u540E_u5168_u9009_u590D_u5236_u5176_u5185_u5BB9_uFF0C_u628A_u5B83_u7C98_u8D34_u4E0A_u53BB_uFF0C_u70B9_u51FBok_2C_u7A0D_u7B49_u7247_u523B_uFF0C_u5C31_u53EF_u4EE5_u4E86_u3002_u5982_u56FE_uFF1A" class="headerlink" title="8. 我们打开刚才下载的，还记得我上面强调有3个文件吧，好了，我们打开key.txt。然后全选复制其内容，把它粘贴上去，点击ok,稍等片刻，就可以了。如图："></a>8. 我们打开刚才下载的，还记得我上面强调有3个文件吧，好了，我们打开key.txt。然后全选复制其内容，把它粘贴上去，点击ok,稍等片刻，就可以了。如图：</h4><p><img src="/../../../../../static/images/unityVs/9.png" alt="9"></p>
+<h4 id="9-__u6211_u4EEC_u73B0_u5728_u53EF_u4EE5_u5199_u811A_u672C_u4E86_uFF0C_u6211_u5728DebugTest-cs_u5199_u7684_u5185_u5BB9_u5F88_u7B80_u5355_uFF0C_u5C31_u662F_u6D4B_u8BD5_u4ECE1+_u202610_u3002__u5185_u5BB9_u5982_u4E0B_3A"><a href="#9-__u6211_u4EEC_u73B0_u5728_u53EF_u4EE5_u5199_u811A_u672C_u4E86_uFF0C_u6211_u5728DebugTest-cs_u5199_u7684_u5185_u5BB9_u5F88_u7B80_u5355_uFF0C_u5C31_u662F_u6D4B_u8BD5_u4ECE1+_u202610_u3002__u5185_u5BB9_u5982_u4E0B_3A" class="headerlink" title="9. 我们现在可以写脚本了，我在DebugTest.cs写的内容很简单，就是测试从1+…10。  内容如下:"></a>9. 我们现在可以写脚本了，我在DebugTest.cs写的内容很简单，就是测试从1+…10。  内容如下:</h4><pre><code>using UnityEngine;
 using System.Collections;
 public class DebugTest : MonoBehaviour
 {
@@ -262,12 +117,9 @@ public class DebugTest : MonoBehaviour
         }
     }
 }
-</code></pre><p>####10. 我们把脚本拖个Main Camera . 好了 ，我们来随便加个断点吧，如图：</p>
-<p><img src="/../../../../../static/images/unityVs/10.png" alt="10"></p>
-<p>####11. 我们可以开始断点测试了(有可能或弹出要你输入license ，那就要再次把我们的key给粘贴进去)。点击vs的启动，如图：</p>
-<p><img src="/../../../../../static/images/unityVs/11.png" alt="11"><br><img src="/../../../../../static/images/unityVs/12.png" alt="12"></p>
-<p>####12. 可以看见我启动成功了。然后我们回到unity 中，开始运行程序，当我们点击Add按钮后，程序运行到了我们断点处就停在那了。好了，时间不早了，我该休息了，明天还要7点起来上班了。 能力有限，出错难免，还望大家多多指点！</p>
-<p><img src="/../../../../../static/images/unityVs/13.png" alt="13"></p>
+</code></pre><h4 id="10-__u6211_u4EEC_u628A_u811A_u672C_u62D6_u4E2AMain_Camera_-__u597D_u4E86__uFF0C_u6211_u4EEC_u6765_u968F_u4FBF_u52A0_u4E2A_u65AD_u70B9_u5427_uFF0C_u5982_u56FE_uFF1A"><a href="#10-__u6211_u4EEC_u628A_u811A_u672C_u62D6_u4E2AMain_Camera_-__u597D_u4E86__uFF0C_u6211_u4EEC_u6765_u968F_u4FBF_u52A0_u4E2A_u65AD_u70B9_u5427_uFF0C_u5982_u56FE_uFF1A" class="headerlink" title="10. 我们把脚本拖个Main Camera . 好了 ，我们来随便加个断点吧，如图："></a>10. 我们把脚本拖个Main Camera . 好了 ，我们来随便加个断点吧，如图：</h4><p><img src="/../../../../../static/images/unityVs/10.png" alt="10"></p>
+<h4 id="11-__u6211_u4EEC_u53EF_u4EE5_u5F00_u59CB_u65AD_u70B9_u6D4B_u8BD5_u4E86_28_u6709_u53EF_u80FD_u6216_u5F39_u51FA_u8981_u4F60_u8F93_u5165license__uFF0C_u90A3_u5C31_u8981_u518D_u6B21_u628A_u6211_u4EEC_u7684key_u7ED9_u7C98_u8D34_u8FDB_u53BB_29_u3002_u70B9_u51FBvs_u7684_u542F_u52A8_uFF0C_u5982_u56FE_uFF1A"><a href="#11-__u6211_u4EEC_u53EF_u4EE5_u5F00_u59CB_u65AD_u70B9_u6D4B_u8BD5_u4E86_28_u6709_u53EF_u80FD_u6216_u5F39_u51FA_u8981_u4F60_u8F93_u5165license__uFF0C_u90A3_u5C31_u8981_u518D_u6B21_u628A_u6211_u4EEC_u7684key_u7ED9_u7C98_u8D34_u8FDB_u53BB_29_u3002_u70B9_u51FBvs_u7684_u542F_u52A8_uFF0C_u5982_u56FE_uFF1A" class="headerlink" title="11. 我们可以开始断点测试了(有可能或弹出要你输入license ，那就要再次把我们的key给粘贴进去)。点击vs的启动，如图："></a>11. 我们可以开始断点测试了(有可能或弹出要你输入license ，那就要再次把我们的key给粘贴进去)。点击vs的启动，如图：</h4><p><img src="/../../../../../static/images/unityVs/11.png" alt="11"><br><img src="/../../../../../static/images/unityVs/12.png" alt="12"></p>
+<h4 id="12-__u53EF_u4EE5_u770B_u89C1_u6211_u542F_u52A8_u6210_u529F_u4E86_u3002_u7136_u540E_u6211_u4EEC_u56DE_u5230unity__u4E2D_uFF0C_u5F00_u59CB_u8FD0_u884C_u7A0B_u5E8F_uFF0C_u5F53_u6211_u4EEC_u70B9_u51FBAdd_u6309_u94AE_u540E_uFF0C_u7A0B_u5E8F_u8FD0_u884C_u5230_u4E86_u6211_u4EEC_u65AD_u70B9_u5904_u5C31_u505C_u5728_u90A3_u4E86_u3002_u597D_u4E86_uFF0C_u65F6_u95F4_u4E0D_u65E9_u4E86_uFF0C_u6211_u8BE5_u4F11_u606F_u4E86_uFF0C_u660E_u5929_u8FD8_u89817_u70B9_u8D77_u6765_u4E0A_u73ED_u4E86_u3002__u80FD_u529B_u6709_u9650_uFF0C_u51FA_u9519_u96BE_u514D_uFF0C_u8FD8_u671B_u5927_u5BB6_u591A_u591A_u6307_u70B9_uFF01"><a href="#12-__u53EF_u4EE5_u770B_u89C1_u6211_u542F_u52A8_u6210_u529F_u4E86_u3002_u7136_u540E_u6211_u4EEC_u56DE_u5230unity__u4E2D_uFF0C_u5F00_u59CB_u8FD0_u884C_u7A0B_u5E8F_uFF0C_u5F53_u6211_u4EEC_u70B9_u51FBAdd_u6309_u94AE_u540E_uFF0C_u7A0B_u5E8F_u8FD0_u884C_u5230_u4E86_u6211_u4EEC_u65AD_u70B9_u5904_u5C31_u505C_u5728_u90A3_u4E86_u3002_u597D_u4E86_uFF0C_u65F6_u95F4_u4E0D_u65E9_u4E86_uFF0C_u6211_u8BE5_u4F11_u606F_u4E86_uFF0C_u660E_u5929_u8FD8_u89817_u70B9_u8D77_u6765_u4E0A_u73ED_u4E86_u3002__u80FD_u529B_u6709_u9650_uFF0C_u51FA_u9519_u96BE_u514D_uFF0C_u8FD8_u671B_u5927_u5BB6_u591A_u591A_u6307_u70B9_uFF01" class="headerlink" title="12. 可以看见我启动成功了。然后我们回到unity 中，开始运行程序，当我们点击Add按钮后，程序运行到了我们断点处就停在那了。好了，时间不早了，我该休息了，明天还要7点起来上班了。 能力有限，出错难免，还望大家多多指点！"></a>12. 可以看见我启动成功了。然后我们回到unity 中，开始运行程序，当我们点击Add按钮后，程序运行到了我们断点处就停在那了。好了，时间不早了，我该休息了，明天还要7点起来上班了。 能力有限，出错难免，还望大家多多指点！</h4><p><img src="/../../../../../static/images/unityVs/13.png" alt="13"></p>
 <p>转自 <a href="http://www.cnblogs.com/hejianchun/articles/3486758.html" target="_blank" rel="external">http://www.cnblogs.com/hejianchun/articles/3486758.html</a></p>
 <p>转者注：作者也说了他要休息了，会出现错误，这里把小错误都修正了 ╮(╯▽╰)╭</p>
 <p>— End —</p>
@@ -275,7 +127,7 @@ public class DebugTest : MonoBehaviour
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hellogavin88.github.io/2014/12/11/2014-12-11-UnityVs/" data-id="ciipwi1sl0013mwvmooczsgoy" class="article-share-link">Share</a>
+      <a data-url="http://hellogavin88.github.io/2014/12/11/2014-12-11-UnityVs/" data-id="ciipwodv30012pgvml4qsjafl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
@@ -300,7 +152,7 @@ public class DebugTest : MonoBehaviour
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/editor/">editor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reship/">reship</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reship-coding/">reship,coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unity/">unity</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/why/">why</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/works/">works</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/editor/">editor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reship/">reship</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reship-coding/">reship,coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unity/">unity</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/why/">why</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -309,7 +161,7 @@ public class DebugTest : MonoBehaviour
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActionScript/">ActionScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">unity</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">unity</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -318,7 +170,7 @@ public class DebugTest : MonoBehaviour
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ActionScript/" style="font-size: 10px;">ActionScript</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/unity/" style="font-size: 10px;">unity</a>
+      <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/unity/" style="font-size: 10px;">unity</a>
     </div>
   </div>
 
@@ -327,7 +179,7 @@ public class DebugTest : MonoBehaviour
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">9</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -337,10 +189,6 @@ public class DebugTest : MonoBehaviour
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2015/11/12/2014-11-28-works-Maze/">Maze</a>
-          </li>
         
           <li>
             <a href="/2015/04/10/2015-4-10-Unity-Optimize/">Unity项目优化</a>
@@ -356,6 +204,10 @@ public class DebugTest : MonoBehaviour
         
           <li>
             <a href="/2014/12/22/2014-12-22-string/">string是引用类型还是值类型</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/18/2014-12-18-boxing/">为什么装箱拆箱有性能损失</a>
           </li>
         
       </ul>

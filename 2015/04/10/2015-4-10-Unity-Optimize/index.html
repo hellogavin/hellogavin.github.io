@@ -12,10 +12,9 @@
         DoSomething();
     }
 }
-####2. 定时重复调用可以使用InvokeRepeating函数实现，比如，启动0.5秒后每隔1秒执行一次 DoSomeThing 函数
-void Start()
+2. 定时重复调用可以使用InvokeRepeating函数实现，比如，启动0.5秒后每隔1秒执行一次 DoSomeThing 函数void Start()
 {
-    Invo">
+    InvokeRep">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity项目优化">
 <meta property="og:url" content="http://hellogavin88.github.io/2015/04/10/2015-4-10-Unity-Optimize/index.html">
@@ -27,11 +26,10 @@ void Start()
         DoSomething();
     }
 }
-####2. 定时重复调用可以使用InvokeRepeating函数实现，比如，启动0.5秒后每隔1秒执行一次 DoSomeThing 函数
-void Start()
+2. 定时重复调用可以使用InvokeRepeating函数实现，比如，启动0.5秒后每隔1秒执行一次 DoSomeThing 函数void Start()
 {
-    Invo">
-<meta property="og:updated_time" content="2015-12-28T11:47:54.885Z">
+    InvokeRep">
+<meta property="og:updated_time" content="2015-12-28T11:49:29.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Unity项目优化">
 <meta name="twitter:description" content="1. 如果没必要每帧都处理的话，可以隔几帧再处理void Update()
@@ -41,10 +39,9 @@ void Start()
         DoSomething();
     }
 }
-####2. 定时重复调用可以使用InvokeRepeating函数实现，比如，启动0.5秒后每隔1秒执行一次 DoSomeThing 函数
-void Start()
+2. 定时重复调用可以使用InvokeRepeating函数实现，比如，启动0.5秒后每隔1秒执行一次 DoSomeThing 函数void Start()
 {
-    Invo">
+    InvokeRep">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -116,41 +113,28 @@ void Start()
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-__u5982_u679C_u6CA1_u5FC5_u8981_u6BCF_u5E27_u90FD_u5904_u7406_u7684_u8BDD_uFF0C_u53EF_u4EE5_u9694_u51E0_u5E27_u518D_u5904_u7406"><a href="#1-__u5982_u679C_u6CA1_u5FC5_u8981_u6BCF_u5E27_u90FD_u5904_u7406_u7684_u8BDD_uFF0C_u53EF_u4EE5_u9694_u51E0_u5E27_u518D_u5904_u7406" class="headerlink" title="1. 如果没必要每帧都处理的话，可以隔几帧再处理"></a>1. 如果没必要每帧都处理的话，可以隔几帧再处理</h3><pre><code>void Update()
+        <h4 id="1-__u5982_u679C_u6CA1_u5FC5_u8981_u6BCF_u5E27_u90FD_u5904_u7406_u7684_u8BDD_uFF0C_u53EF_u4EE5_u9694_u51E0_u5E27_u518D_u5904_u7406"><a href="#1-__u5982_u679C_u6CA1_u5FC5_u8981_u6BCF_u5E27_u90FD_u5904_u7406_u7684_u8BDD_uFF0C_u53EF_u4EE5_u9694_u51E0_u5E27_u518D_u5904_u7406" class="headerlink" title="1. 如果没必要每帧都处理的话，可以隔几帧再处理"></a>1. 如果没必要每帧都处理的话，可以隔几帧再处理</h4><pre><code>void Update()
 {
     if(Time.frameCount%6==0)
     {
         DoSomething();
     }
 }
-</code></pre><p>####2. 定时重复调用可以使用InvokeRepeating函数实现，比如，启动0.5秒后每隔1秒执行一次 DoSomeThing 函数</p>
-<pre><code>void Start()
+</code></pre><h4 id="2-__u5B9A_u65F6_u91CD_u590D_u8C03_u7528_u53EF_u4EE5_u4F7F_u7528InvokeRepeating_u51FD_u6570_u5B9E_u73B0_uFF0C_u6BD4_u5982_uFF0C_u542F_u52A80-5_u79D2_u540E_u6BCF_u96941_u79D2_u6267_u884C_u4E00_u6B21_DoSomeThing__u51FD_u6570"><a href="#2-__u5B9A_u65F6_u91CD_u590D_u8C03_u7528_u53EF_u4EE5_u4F7F_u7528InvokeRepeating_u51FD_u6570_u5B9E_u73B0_uFF0C_u6BD4_u5982_uFF0C_u542F_u52A80-5_u79D2_u540E_u6BCF_u96941_u79D2_u6267_u884C_u4E00_u6B21_DoSomeThing__u51FD_u6570" class="headerlink" title="2. 定时重复调用可以使用InvokeRepeating函数实现，比如，启动0.5秒后每隔1秒执行一次 DoSomeThing 函数"></a>2. 定时重复调用可以使用InvokeRepeating函数实现，比如，启动0.5秒后每隔1秒执行一次 DoSomeThing 函数</h4><pre><code>void Start()
 {
     InvokeRepeating(&quot;DoSomeThing&quot;, 0.5f, 1.0f);
 }
-</code></pre><p>####3. 少使用临时变量，特别是在Update OnGUI等实时调用的函数中</p>
-<p>####4. 主动进行垃圾回收</p>
-<p>####5. 优化数学运算，尽量避免使用float，而使用int，特别是在Update函数中，尽量少用复杂的数学函数，比如sin,cos等函数。改除法为乘法</p>
-<p>####6. 压缩 Mesh</p>
-<p>导入 3D 模型之后，在不影响显示效果的前提下，最好打开 Mesh Compression。  Off, Low, Medium, High 这几个选项，可酌情选取。对于单个Mesh最好使用一个材质。</p>
-<p>####7. 运行时尽量减少 Tris 和 Draw Calls</p>
-<p>预览的时候，可点开 Stats，查看图形渲染的开销情况。特别注意 Tris 和 Draw Calls 这两个参数。  一般来说，要做到：  Tris 保持在 7.5k 以下  ，Draw Calls 保持在 35 以下。</p>
-<p>####8. 避免大量使用 Unity 自带的 Sphere 等内建 Mesh</p>
-<p>Unity 内建的 Mesh，多边形的数量比较大，如果物体不要求特别圆滑，可导入其他的简单3D模型代替。</p>
-<p>####9. 不要使用SendMessage之类的方法，他比直接调用方法慢了100倍，你可以直接调用或通过C#的委托来实现</p>
-<p>####10. 使用javascript或Boo语言时，你最好确定变量的类型，不要使用动态类型，这样会降低效率，你可以在脚本开头使用#pragmastrict 来检查，这样当你编译你的游戏时就不会出现莫名其妙的错误了</p>
-<p>####11. 协同是一个好方法。可以使用协同程序来代替不必每帧都执行的方法。（还有InvokeRepeating方法也是一个好的取代Update的方法）</p>
-<p>####12. 引用一个游戏对象的组件</p>
-<p>有人可能会这样写someGameObject.transform，gameObject.rigidbody.transform.gameObject.rigidbody.transform，但是这样做了一些不必要的工作，你可以在最开始的地方引用它，像这样：</p>
+</code></pre><h4 id="3-__u5C11_u4F7F_u7528_u4E34_u65F6_u53D8_u91CF_uFF0C_u7279_u522B_u662F_u5728Update_OnGUI_u7B49_u5B9E_u65F6_u8C03_u7528_u7684_u51FD_u6570_u4E2D"><a href="#3-__u5C11_u4F7F_u7528_u4E34_u65F6_u53D8_u91CF_uFF0C_u7279_u522B_u662F_u5728Update_OnGUI_u7B49_u5B9E_u65F6_u8C03_u7528_u7684_u51FD_u6570_u4E2D" class="headerlink" title="3. 少使用临时变量，特别是在Update OnGUI等实时调用的函数中"></a>3. 少使用临时变量，特别是在Update OnGUI等实时调用的函数中</h4><h4 id="4-__u4E3B_u52A8_u8FDB_u884C_u5783_u573E_u56DE_u6536"><a href="#4-__u4E3B_u52A8_u8FDB_u884C_u5783_u573E_u56DE_u6536" class="headerlink" title="4. 主动进行垃圾回收"></a>4. 主动进行垃圾回收</h4><h4 id="5-__u4F18_u5316_u6570_u5B66_u8FD0_u7B97_uFF0C_u5C3D_u91CF_u907F_u514D_u4F7F_u7528float_uFF0C_u800C_u4F7F_u7528int_uFF0C_u7279_u522B_u662F_u5728Update_u51FD_u6570_u4E2D_uFF0C_u5C3D_u91CF_u5C11_u7528_u590D_u6742_u7684_u6570_u5B66_u51FD_u6570_uFF0C_u6BD4_u5982sin_2Ccos_u7B49_u51FD_u6570_u3002_u6539_u9664_u6CD5_u4E3A_u4E58_u6CD5"><a href="#5-__u4F18_u5316_u6570_u5B66_u8FD0_u7B97_uFF0C_u5C3D_u91CF_u907F_u514D_u4F7F_u7528float_uFF0C_u800C_u4F7F_u7528int_uFF0C_u7279_u522B_u662F_u5728Update_u51FD_u6570_u4E2D_uFF0C_u5C3D_u91CF_u5C11_u7528_u590D_u6742_u7684_u6570_u5B66_u51FD_u6570_uFF0C_u6BD4_u5982sin_2Ccos_u7B49_u51FD_u6570_u3002_u6539_u9664_u6CD5_u4E3A_u4E58_u6CD5" class="headerlink" title="5. 优化数学运算，尽量避免使用float，而使用int，特别是在Update函数中，尽量少用复杂的数学函数，比如sin,cos等函数。改除法为乘法"></a>5. 优化数学运算，尽量避免使用float，而使用int，特别是在Update函数中，尽量少用复杂的数学函数，比如sin,cos等函数。改除法为乘法</h4><h4 id="6-__u538B_u7F29_Mesh"><a href="#6-__u538B_u7F29_Mesh" class="headerlink" title="6. 压缩 Mesh"></a>6. 压缩 Mesh</h4><p>导入 3D 模型之后，在不影响显示效果的前提下，最好打开 Mesh Compression。  Off, Low, Medium, High 这几个选项，可酌情选取。对于单个Mesh最好使用一个材质。</p>
+<h4 id="7-__u8FD0_u884C_u65F6_u5C3D_u91CF_u51CF_u5C11_Tris__u548C_Draw_Calls"><a href="#7-__u8FD0_u884C_u65F6_u5C3D_u91CF_u51CF_u5C11_Tris__u548C_Draw_Calls" class="headerlink" title="7. 运行时尽量减少 Tris 和 Draw Calls"></a>7. 运行时尽量减少 Tris 和 Draw Calls</h4><p>预览的时候，可点开 Stats，查看图形渲染的开销情况。特别注意 Tris 和 Draw Calls 这两个参数。  一般来说，要做到：  Tris 保持在 7.5k 以下  ，Draw Calls 保持在 35 以下。</p>
+<h4 id="8-__u907F_u514D_u5927_u91CF_u4F7F_u7528_Unity__u81EA_u5E26_u7684_Sphere__u7B49_u5185_u5EFA_Mesh"><a href="#8-__u907F_u514D_u5927_u91CF_u4F7F_u7528_Unity__u81EA_u5E26_u7684_Sphere__u7B49_u5185_u5EFA_Mesh" class="headerlink" title="8. 避免大量使用 Unity 自带的 Sphere 等内建 Mesh"></a>8. 避免大量使用 Unity 自带的 Sphere 等内建 Mesh</h4><p>Unity 内建的 Mesh，多边形的数量比较大，如果物体不要求特别圆滑，可导入其他的简单3D模型代替。</p>
+<h4 id="9-__u4E0D_u8981_u4F7F_u7528SendMessage_u4E4B_u7C7B_u7684_u65B9_u6CD5_uFF0C_u4ED6_u6BD4_u76F4_u63A5_u8C03_u7528_u65B9_u6CD5_u6162_u4E86100_u500D_uFF0C_u4F60_u53EF_u4EE5_u76F4_u63A5_u8C03_u7528_u6216_u901A_u8FC7C_23_u7684_u59D4_u6258_u6765_u5B9E_u73B0"><a href="#9-__u4E0D_u8981_u4F7F_u7528SendMessage_u4E4B_u7C7B_u7684_u65B9_u6CD5_uFF0C_u4ED6_u6BD4_u76F4_u63A5_u8C03_u7528_u65B9_u6CD5_u6162_u4E86100_u500D_uFF0C_u4F60_u53EF_u4EE5_u76F4_u63A5_u8C03_u7528_u6216_u901A_u8FC7C_23_u7684_u59D4_u6258_u6765_u5B9E_u73B0" class="headerlink" title="9. 不要使用SendMessage之类的方法，他比直接调用方法慢了100倍，你可以直接调用或通过C#的委托来实现"></a>9. 不要使用SendMessage之类的方法，他比直接调用方法慢了100倍，你可以直接调用或通过C#的委托来实现</h4><h4 id="10-__u4F7F_u7528javascript_u6216Boo_u8BED_u8A00_u65F6_uFF0C_u4F60_u6700_u597D_u786E_u5B9A_u53D8_u91CF_u7684_u7C7B_u578B_uFF0C_u4E0D_u8981_u4F7F_u7528_u52A8_u6001_u7C7B_u578B_uFF0C_u8FD9_u6837_u4F1A_u964D_u4F4E_u6548_u7387_uFF0C_u4F60_u53EF_u4EE5_u5728_u811A_u672C_u5F00_u5934_u4F7F_u7528_23pragmastrict__u6765_u68C0_u67E5_uFF0C_u8FD9_u6837_u5F53_u4F60_u7F16_u8BD1_u4F60_u7684_u6E38_u620F_u65F6_u5C31_u4E0D_u4F1A_u51FA_u73B0_u83AB_u540D_u5176_u5999_u7684_u9519_u8BEF_u4E86"><a href="#10-__u4F7F_u7528javascript_u6216Boo_u8BED_u8A00_u65F6_uFF0C_u4F60_u6700_u597D_u786E_u5B9A_u53D8_u91CF_u7684_u7C7B_u578B_uFF0C_u4E0D_u8981_u4F7F_u7528_u52A8_u6001_u7C7B_u578B_uFF0C_u8FD9_u6837_u4F1A_u964D_u4F4E_u6548_u7387_uFF0C_u4F60_u53EF_u4EE5_u5728_u811A_u672C_u5F00_u5934_u4F7F_u7528_23pragmastrict__u6765_u68C0_u67E5_uFF0C_u8FD9_u6837_u5F53_u4F60_u7F16_u8BD1_u4F60_u7684_u6E38_u620F_u65F6_u5C31_u4E0D_u4F1A_u51FA_u73B0_u83AB_u540D_u5176_u5999_u7684_u9519_u8BEF_u4E86" class="headerlink" title="10. 使用javascript或Boo语言时，你最好确定变量的类型，不要使用动态类型，这样会降低效率，你可以在脚本开头使用#pragmastrict 来检查，这样当你编译你的游戏时就不会出现莫名其妙的错误了"></a>10. 使用javascript或Boo语言时，你最好确定变量的类型，不要使用动态类型，这样会降低效率，你可以在脚本开头使用#pragmastrict 来检查，这样当你编译你的游戏时就不会出现莫名其妙的错误了</h4><h4 id="11-__u534F_u540C_u662F_u4E00_u4E2A_u597D_u65B9_u6CD5_u3002_u53EF_u4EE5_u4F7F_u7528_u534F_u540C_u7A0B_u5E8F_u6765_u4EE3_u66FF_u4E0D_u5FC5_u6BCF_u5E27_u90FD_u6267_u884C_u7684_u65B9_u6CD5_u3002_uFF08_u8FD8_u6709InvokeRepeating_u65B9_u6CD5_u4E5F_u662F_u4E00_u4E2A_u597D_u7684_u53D6_u4EE3Update_u7684_u65B9_u6CD5_uFF09"><a href="#11-__u534F_u540C_u662F_u4E00_u4E2A_u597D_u65B9_u6CD5_u3002_u53EF_u4EE5_u4F7F_u7528_u534F_u540C_u7A0B_u5E8F_u6765_u4EE3_u66FF_u4E0D_u5FC5_u6BCF_u5E27_u90FD_u6267_u884C_u7684_u65B9_u6CD5_u3002_uFF08_u8FD8_u6709InvokeRepeating_u65B9_u6CD5_u4E5F_u662F_u4E00_u4E2A_u597D_u7684_u53D6_u4EE3Update_u7684_u65B9_u6CD5_uFF09" class="headerlink" title="11. 协同是一个好方法。可以使用协同程序来代替不必每帧都执行的方法。（还有InvokeRepeating方法也是一个好的取代Update的方法）"></a>11. 协同是一个好方法。可以使用协同程序来代替不必每帧都执行的方法。（还有InvokeRepeating方法也是一个好的取代Update的方法）</h4><h4 id="12-__u5F15_u7528_u4E00_u4E2A_u6E38_u620F_u5BF9_u8C61_u7684_u7EC4_u4EF6"><a href="#12-__u5F15_u7528_u4E00_u4E2A_u6E38_u620F_u5BF9_u8C61_u7684_u7EC4_u4EF6" class="headerlink" title="12. 引用一个游戏对象的组件"></a>12. 引用一个游戏对象的组件</h4><p>有人可能会这样写someGameObject.transform，gameObject.rigidbody.transform.gameObject.rigidbody.transform，但是这样做了一些不必要的工作，你可以在最开始的地方引用它，像这样：</p>
 <pre><code>private Transform myTrans;
 void Start()
 {
     myTrans=someGameObject.transform;
 }
-</code></pre><p>####13. 关掉不必要的脚本</p>
-<p>如果可能，将GameObject上不必要的脚本disable掉。如果你有一个大的场景在你的游戏中，并且敌方的位置在数千米意外，这是你可以disable你的敌方AI脚本直到它们接近摄像机为止。一个好的途径来开启或关闭GameObject是使用SetActiveRecursively(false），并且球形或盒型碰撞器设为trigger</p>
-<p>####14. 删除空的Update方法。当通过Assets目录创建新的脚本时，脚本里会包括一个Update方法，当你不使用时删除它</p>
-<h4 id="Unity3d_u7684_u4E00_u4E9B_u5C0F_u7A8D_u95E8"><a href="#Unity3d_u7684_u4E00_u4E9B_u5C0F_u7A8D_u95E8" class="headerlink" title="- Unity3d的一些小窍门"></a>- Unity3d的一些小窍门</h4><p>防止黑屏<br>In script change iPhoneSettings.screenCanDarken to false. This basically does the same as:<br>//Objective-C call [UIApplication sharedApplication].idleTimerDisabled = YES;<br>It prevents the auto lock on iPhone to kick-in.<br>参考：</p>
+</code></pre><h4 id="13-__u5173_u6389_u4E0D_u5FC5_u8981_u7684_u811A_u672C"><a href="#13-__u5173_u6389_u4E0D_u5FC5_u8981_u7684_u811A_u672C" class="headerlink" title="13. 关掉不必要的脚本"></a>13. 关掉不必要的脚本</h4><p>如果可能，将GameObject上不必要的脚本disable掉。如果你有一个大的场景在你的游戏中，并且敌方的位置在数千米意外，这是你可以disable你的敌方AI脚本直到它们接近摄像机为止。一个好的途径来开启或关闭GameObject是使用SetActiveRecursively(false），并且球形或盒型碰撞器设为trigger</p>
+<h4 id="14-__u5220_u9664_u7A7A_u7684Update_u65B9_u6CD5_u3002_u5F53_u901A_u8FC7Assets_u76EE_u5F55_u521B_u5EFA_u65B0_u7684_u811A_u672C_u65F6_uFF0C_u811A_u672C_u91CC_u4F1A_u5305_u62EC_u4E00_u4E2AUpdate_u65B9_u6CD5_uFF0C_u5F53_u4F60_u4E0D_u4F7F_u7528_u65F6_u5220_u9664_u5B83"><a href="#14-__u5220_u9664_u7A7A_u7684Update_u65B9_u6CD5_u3002_u5F53_u901A_u8FC7Assets_u76EE_u5F55_u521B_u5EFA_u65B0_u7684_u811A_u672C_u65F6_uFF0C_u811A_u672C_u91CC_u4F1A_u5305_u62EC_u4E00_u4E2AUpdate_u65B9_u6CD5_uFF0C_u5F53_u4F60_u4E0D_u4F7F_u7528_u65F6_u5220_u9664_u5B83" class="headerlink" title="14. 删除空的Update方法。当通过Assets目录创建新的脚本时，脚本里会包括一个Update方法，当你不使用时删除它"></a>14. 删除空的Update方法。当通过Assets目录创建新的脚本时，脚本里会包括一个Update方法，当你不使用时删除它</h4><h4 id="Unity3d_u7684_u4E00_u4E9B_u5C0F_u7A8D_u95E8"><a href="#Unity3d_u7684_u4E00_u4E9B_u5C0F_u7A8D_u95E8" class="headerlink" title="- Unity3d的一些小窍门"></a>- Unity3d的一些小窍门</h4><p>防止黑屏<br>In script change iPhoneSettings.screenCanDarken to false. This basically does the same as:<br>//Objective-C call [UIApplication sharedApplication].idleTimerDisabled = YES;<br>It prevents the auto lock on iPhone to kick-in.<br>参考：</p>
 <p>1.<a href="http://www.cnblogs.com/veboys/p/4091527.html" target="_blank" rel="external">http://www.cnblogs.com/veboys/p/4091527.html</a></p>
 <p>2.<a href="http://forum.china.unity3d.com/thread-570-1-1.html" target="_blank" rel="external">http://forum.china.unity3d.com/thread-570-1-1.html</a></p>
 <p>— End —</p>
@@ -158,7 +142,7 @@ void Start()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hellogavin88.github.io/2015/04/10/2015-4-10-Unity-Optimize/" data-id="ciipwi1rt000amwvmb3qnapkc" class="article-share-link">Share</a>
+      <a data-url="http://hellogavin88.github.io/2015/04/10/2015-4-10-Unity-Optimize/" data-id="ciipwoduf0009pgvmhua2gjiv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
@@ -168,15 +152,6 @@ void Start()
   
     
 <nav id="article-nav">
-  
-    <a href="/2015/11/12/2014-11-28-works-Maze/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Maze
-        
-      </div>
-    </a>
   
   
     <a href="/2015/04/07/2015-4-7-Unity-Base/" id="article-nav-older" class="article-nav-link-wrap">
@@ -216,7 +191,7 @@ void Start()
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/editor/">editor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reship/">reship</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reship-coding/">reship,coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unity/">unity</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/why/">why</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/works/">works</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/editor/">editor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reship/">reship</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reship-coding/">reship,coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unity/">unity</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/why/">why</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -225,7 +200,7 @@ void Start()
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActionScript/">ActionScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">unity</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">unity</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -234,7 +209,7 @@ void Start()
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ActionScript/" style="font-size: 10px;">ActionScript</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/unity/" style="font-size: 10px;">unity</a>
+      <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/unity/" style="font-size: 10px;">unity</a>
     </div>
   </div>
 
@@ -243,7 +218,7 @@ void Start()
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">9</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -253,10 +228,6 @@ void Start()
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2015/11/12/2014-11-28-works-Maze/">Maze</a>
-          </li>
         
           <li>
             <a href="/2015/04/10/2015-4-10-Unity-Optimize/">Unity项目优化</a>
@@ -272,6 +243,10 @@ void Start()
         
           <li>
             <a href="/2014/12/22/2014-12-22-string/">string是引用类型还是值类型</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/18/2014-12-18-boxing/">为什么装箱拆箱有性能损失</a>
           </li>
         
       </ul>

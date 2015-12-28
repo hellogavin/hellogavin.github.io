@@ -61,49 +61,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2014-11-28-works-Maze" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/12/2014-11-28-works-Maze/" class="article-date">
-  <time datetime="2015-11-12T05:52:21.957Z" itemprop="datePublished">2015-11-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/works/">works</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/12/2014-11-28-works-Maze/">Maze</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <center><embed src="../../../static/swf/maze/Maze.swf" allowfullscreen="true" quality="high" width="520" height="400" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash"></center>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hellogavin88.github.io/2015/11/12/2014-11-28-works-Maze/" data-id="ciipwi1r20000mwvmeppb2dgr" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ActionScript/">ActionScript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-2015-4-10-Unity-Optimize" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/04/10/2015-4-10-Unity-Optimize/" class="article-date">
@@ -130,41 +87,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-__u5982_u679C_u6CA1_u5FC5_u8981_u6BCF_u5E27_u90FD_u5904_u7406_u7684_u8BDD_uFF0C_u53EF_u4EE5_u9694_u51E0_u5E27_u518D_u5904_u7406"><a href="#1-__u5982_u679C_u6CA1_u5FC5_u8981_u6BCF_u5E27_u90FD_u5904_u7406_u7684_u8BDD_uFF0C_u53EF_u4EE5_u9694_u51E0_u5E27_u518D_u5904_u7406" class="headerlink" title="1. 如果没必要每帧都处理的话，可以隔几帧再处理"></a>1. 如果没必要每帧都处理的话，可以隔几帧再处理</h3><pre><code>void Update()
+        <h4 id="1-__u5982_u679C_u6CA1_u5FC5_u8981_u6BCF_u5E27_u90FD_u5904_u7406_u7684_u8BDD_uFF0C_u53EF_u4EE5_u9694_u51E0_u5E27_u518D_u5904_u7406"><a href="#1-__u5982_u679C_u6CA1_u5FC5_u8981_u6BCF_u5E27_u90FD_u5904_u7406_u7684_u8BDD_uFF0C_u53EF_u4EE5_u9694_u51E0_u5E27_u518D_u5904_u7406" class="headerlink" title="1. 如果没必要每帧都处理的话，可以隔几帧再处理"></a>1. 如果没必要每帧都处理的话，可以隔几帧再处理</h4><pre><code>void Update()
 {
     if(Time.frameCount%6==0)
     {
         DoSomething();
     }
 }
-</code></pre><p>####2. 定时重复调用可以使用InvokeRepeating函数实现，比如，启动0.5秒后每隔1秒执行一次 DoSomeThing 函数</p>
-<pre><code>void Start()
+</code></pre><h4 id="2-__u5B9A_u65F6_u91CD_u590D_u8C03_u7528_u53EF_u4EE5_u4F7F_u7528InvokeRepeating_u51FD_u6570_u5B9E_u73B0_uFF0C_u6BD4_u5982_uFF0C_u542F_u52A80-5_u79D2_u540E_u6BCF_u96941_u79D2_u6267_u884C_u4E00_u6B21_DoSomeThing__u51FD_u6570"><a href="#2-__u5B9A_u65F6_u91CD_u590D_u8C03_u7528_u53EF_u4EE5_u4F7F_u7528InvokeRepeating_u51FD_u6570_u5B9E_u73B0_uFF0C_u6BD4_u5982_uFF0C_u542F_u52A80-5_u79D2_u540E_u6BCF_u96941_u79D2_u6267_u884C_u4E00_u6B21_DoSomeThing__u51FD_u6570" class="headerlink" title="2. 定时重复调用可以使用InvokeRepeating函数实现，比如，启动0.5秒后每隔1秒执行一次 DoSomeThing 函数"></a>2. 定时重复调用可以使用InvokeRepeating函数实现，比如，启动0.5秒后每隔1秒执行一次 DoSomeThing 函数</h4><pre><code>void Start()
 {
     InvokeRepeating(&quot;DoSomeThing&quot;, 0.5f, 1.0f);
 }
-</code></pre><p>####3. 少使用临时变量，特别是在Update OnGUI等实时调用的函数中</p>
-<p>####4. 主动进行垃圾回收</p>
-<p>####5. 优化数学运算，尽量避免使用float，而使用int，特别是在Update函数中，尽量少用复杂的数学函数，比如sin,cos等函数。改除法为乘法</p>
-<p>####6. 压缩 Mesh</p>
-<p>导入 3D 模型之后，在不影响显示效果的前提下，最好打开 Mesh Compression。  Off, Low, Medium, High 这几个选项，可酌情选取。对于单个Mesh最好使用一个材质。</p>
-<p>####7. 运行时尽量减少 Tris 和 Draw Calls</p>
-<p>预览的时候，可点开 Stats，查看图形渲染的开销情况。特别注意 Tris 和 Draw Calls 这两个参数。  一般来说，要做到：  Tris 保持在 7.5k 以下  ，Draw Calls 保持在 35 以下。</p>
-<p>####8. 避免大量使用 Unity 自带的 Sphere 等内建 Mesh</p>
-<p>Unity 内建的 Mesh，多边形的数量比较大，如果物体不要求特别圆滑，可导入其他的简单3D模型代替。</p>
-<p>####9. 不要使用SendMessage之类的方法，他比直接调用方法慢了100倍，你可以直接调用或通过C#的委托来实现</p>
-<p>####10. 使用javascript或Boo语言时，你最好确定变量的类型，不要使用动态类型，这样会降低效率，你可以在脚本开头使用#pragmastrict 来检查，这样当你编译你的游戏时就不会出现莫名其妙的错误了</p>
-<p>####11. 协同是一个好方法。可以使用协同程序来代替不必每帧都执行的方法。（还有InvokeRepeating方法也是一个好的取代Update的方法）</p>
-<p>####12. 引用一个游戏对象的组件</p>
-<p>有人可能会这样写someGameObject.transform，gameObject.rigidbody.transform.gameObject.rigidbody.transform，但是这样做了一些不必要的工作，你可以在最开始的地方引用它，像这样：</p>
+</code></pre><h4 id="3-__u5C11_u4F7F_u7528_u4E34_u65F6_u53D8_u91CF_uFF0C_u7279_u522B_u662F_u5728Update_OnGUI_u7B49_u5B9E_u65F6_u8C03_u7528_u7684_u51FD_u6570_u4E2D"><a href="#3-__u5C11_u4F7F_u7528_u4E34_u65F6_u53D8_u91CF_uFF0C_u7279_u522B_u662F_u5728Update_OnGUI_u7B49_u5B9E_u65F6_u8C03_u7528_u7684_u51FD_u6570_u4E2D" class="headerlink" title="3. 少使用临时变量，特别是在Update OnGUI等实时调用的函数中"></a>3. 少使用临时变量，特别是在Update OnGUI等实时调用的函数中</h4><h4 id="4-__u4E3B_u52A8_u8FDB_u884C_u5783_u573E_u56DE_u6536"><a href="#4-__u4E3B_u52A8_u8FDB_u884C_u5783_u573E_u56DE_u6536" class="headerlink" title="4. 主动进行垃圾回收"></a>4. 主动进行垃圾回收</h4><h4 id="5-__u4F18_u5316_u6570_u5B66_u8FD0_u7B97_uFF0C_u5C3D_u91CF_u907F_u514D_u4F7F_u7528float_uFF0C_u800C_u4F7F_u7528int_uFF0C_u7279_u522B_u662F_u5728Update_u51FD_u6570_u4E2D_uFF0C_u5C3D_u91CF_u5C11_u7528_u590D_u6742_u7684_u6570_u5B66_u51FD_u6570_uFF0C_u6BD4_u5982sin_2Ccos_u7B49_u51FD_u6570_u3002_u6539_u9664_u6CD5_u4E3A_u4E58_u6CD5"><a href="#5-__u4F18_u5316_u6570_u5B66_u8FD0_u7B97_uFF0C_u5C3D_u91CF_u907F_u514D_u4F7F_u7528float_uFF0C_u800C_u4F7F_u7528int_uFF0C_u7279_u522B_u662F_u5728Update_u51FD_u6570_u4E2D_uFF0C_u5C3D_u91CF_u5C11_u7528_u590D_u6742_u7684_u6570_u5B66_u51FD_u6570_uFF0C_u6BD4_u5982sin_2Ccos_u7B49_u51FD_u6570_u3002_u6539_u9664_u6CD5_u4E3A_u4E58_u6CD5" class="headerlink" title="5. 优化数学运算，尽量避免使用float，而使用int，特别是在Update函数中，尽量少用复杂的数学函数，比如sin,cos等函数。改除法为乘法"></a>5. 优化数学运算，尽量避免使用float，而使用int，特别是在Update函数中，尽量少用复杂的数学函数，比如sin,cos等函数。改除法为乘法</h4><h4 id="6-__u538B_u7F29_Mesh"><a href="#6-__u538B_u7F29_Mesh" class="headerlink" title="6. 压缩 Mesh"></a>6. 压缩 Mesh</h4><p>导入 3D 模型之后，在不影响显示效果的前提下，最好打开 Mesh Compression。  Off, Low, Medium, High 这几个选项，可酌情选取。对于单个Mesh最好使用一个材质。</p>
+<h4 id="7-__u8FD0_u884C_u65F6_u5C3D_u91CF_u51CF_u5C11_Tris__u548C_Draw_Calls"><a href="#7-__u8FD0_u884C_u65F6_u5C3D_u91CF_u51CF_u5C11_Tris__u548C_Draw_Calls" class="headerlink" title="7. 运行时尽量减少 Tris 和 Draw Calls"></a>7. 运行时尽量减少 Tris 和 Draw Calls</h4><p>预览的时候，可点开 Stats，查看图形渲染的开销情况。特别注意 Tris 和 Draw Calls 这两个参数。  一般来说，要做到：  Tris 保持在 7.5k 以下  ，Draw Calls 保持在 35 以下。</p>
+<h4 id="8-__u907F_u514D_u5927_u91CF_u4F7F_u7528_Unity__u81EA_u5E26_u7684_Sphere__u7B49_u5185_u5EFA_Mesh"><a href="#8-__u907F_u514D_u5927_u91CF_u4F7F_u7528_Unity__u81EA_u5E26_u7684_Sphere__u7B49_u5185_u5EFA_Mesh" class="headerlink" title="8. 避免大量使用 Unity 自带的 Sphere 等内建 Mesh"></a>8. 避免大量使用 Unity 自带的 Sphere 等内建 Mesh</h4><p>Unity 内建的 Mesh，多边形的数量比较大，如果物体不要求特别圆滑，可导入其他的简单3D模型代替。</p>
+<h4 id="9-__u4E0D_u8981_u4F7F_u7528SendMessage_u4E4B_u7C7B_u7684_u65B9_u6CD5_uFF0C_u4ED6_u6BD4_u76F4_u63A5_u8C03_u7528_u65B9_u6CD5_u6162_u4E86100_u500D_uFF0C_u4F60_u53EF_u4EE5_u76F4_u63A5_u8C03_u7528_u6216_u901A_u8FC7C_23_u7684_u59D4_u6258_u6765_u5B9E_u73B0"><a href="#9-__u4E0D_u8981_u4F7F_u7528SendMessage_u4E4B_u7C7B_u7684_u65B9_u6CD5_uFF0C_u4ED6_u6BD4_u76F4_u63A5_u8C03_u7528_u65B9_u6CD5_u6162_u4E86100_u500D_uFF0C_u4F60_u53EF_u4EE5_u76F4_u63A5_u8C03_u7528_u6216_u901A_u8FC7C_23_u7684_u59D4_u6258_u6765_u5B9E_u73B0" class="headerlink" title="9. 不要使用SendMessage之类的方法，他比直接调用方法慢了100倍，你可以直接调用或通过C#的委托来实现"></a>9. 不要使用SendMessage之类的方法，他比直接调用方法慢了100倍，你可以直接调用或通过C#的委托来实现</h4><h4 id="10-__u4F7F_u7528javascript_u6216Boo_u8BED_u8A00_u65F6_uFF0C_u4F60_u6700_u597D_u786E_u5B9A_u53D8_u91CF_u7684_u7C7B_u578B_uFF0C_u4E0D_u8981_u4F7F_u7528_u52A8_u6001_u7C7B_u578B_uFF0C_u8FD9_u6837_u4F1A_u964D_u4F4E_u6548_u7387_uFF0C_u4F60_u53EF_u4EE5_u5728_u811A_u672C_u5F00_u5934_u4F7F_u7528_23pragmastrict__u6765_u68C0_u67E5_uFF0C_u8FD9_u6837_u5F53_u4F60_u7F16_u8BD1_u4F60_u7684_u6E38_u620F_u65F6_u5C31_u4E0D_u4F1A_u51FA_u73B0_u83AB_u540D_u5176_u5999_u7684_u9519_u8BEF_u4E86"><a href="#10-__u4F7F_u7528javascript_u6216Boo_u8BED_u8A00_u65F6_uFF0C_u4F60_u6700_u597D_u786E_u5B9A_u53D8_u91CF_u7684_u7C7B_u578B_uFF0C_u4E0D_u8981_u4F7F_u7528_u52A8_u6001_u7C7B_u578B_uFF0C_u8FD9_u6837_u4F1A_u964D_u4F4E_u6548_u7387_uFF0C_u4F60_u53EF_u4EE5_u5728_u811A_u672C_u5F00_u5934_u4F7F_u7528_23pragmastrict__u6765_u68C0_u67E5_uFF0C_u8FD9_u6837_u5F53_u4F60_u7F16_u8BD1_u4F60_u7684_u6E38_u620F_u65F6_u5C31_u4E0D_u4F1A_u51FA_u73B0_u83AB_u540D_u5176_u5999_u7684_u9519_u8BEF_u4E86" class="headerlink" title="10. 使用javascript或Boo语言时，你最好确定变量的类型，不要使用动态类型，这样会降低效率，你可以在脚本开头使用#pragmastrict 来检查，这样当你编译你的游戏时就不会出现莫名其妙的错误了"></a>10. 使用javascript或Boo语言时，你最好确定变量的类型，不要使用动态类型，这样会降低效率，你可以在脚本开头使用#pragmastrict 来检查，这样当你编译你的游戏时就不会出现莫名其妙的错误了</h4><h4 id="11-__u534F_u540C_u662F_u4E00_u4E2A_u597D_u65B9_u6CD5_u3002_u53EF_u4EE5_u4F7F_u7528_u534F_u540C_u7A0B_u5E8F_u6765_u4EE3_u66FF_u4E0D_u5FC5_u6BCF_u5E27_u90FD_u6267_u884C_u7684_u65B9_u6CD5_u3002_uFF08_u8FD8_u6709InvokeRepeating_u65B9_u6CD5_u4E5F_u662F_u4E00_u4E2A_u597D_u7684_u53D6_u4EE3Update_u7684_u65B9_u6CD5_uFF09"><a href="#11-__u534F_u540C_u662F_u4E00_u4E2A_u597D_u65B9_u6CD5_u3002_u53EF_u4EE5_u4F7F_u7528_u534F_u540C_u7A0B_u5E8F_u6765_u4EE3_u66FF_u4E0D_u5FC5_u6BCF_u5E27_u90FD_u6267_u884C_u7684_u65B9_u6CD5_u3002_uFF08_u8FD8_u6709InvokeRepeating_u65B9_u6CD5_u4E5F_u662F_u4E00_u4E2A_u597D_u7684_u53D6_u4EE3Update_u7684_u65B9_u6CD5_uFF09" class="headerlink" title="11. 协同是一个好方法。可以使用协同程序来代替不必每帧都执行的方法。（还有InvokeRepeating方法也是一个好的取代Update的方法）"></a>11. 协同是一个好方法。可以使用协同程序来代替不必每帧都执行的方法。（还有InvokeRepeating方法也是一个好的取代Update的方法）</h4><h4 id="12-__u5F15_u7528_u4E00_u4E2A_u6E38_u620F_u5BF9_u8C61_u7684_u7EC4_u4EF6"><a href="#12-__u5F15_u7528_u4E00_u4E2A_u6E38_u620F_u5BF9_u8C61_u7684_u7EC4_u4EF6" class="headerlink" title="12. 引用一个游戏对象的组件"></a>12. 引用一个游戏对象的组件</h4><p>有人可能会这样写someGameObject.transform，gameObject.rigidbody.transform.gameObject.rigidbody.transform，但是这样做了一些不必要的工作，你可以在最开始的地方引用它，像这样：</p>
 <pre><code>private Transform myTrans;
 void Start()
 {
     myTrans=someGameObject.transform;
 }
-</code></pre><p>####13. 关掉不必要的脚本</p>
-<p>如果可能，将GameObject上不必要的脚本disable掉。如果你有一个大的场景在你的游戏中，并且敌方的位置在数千米意外，这是你可以disable你的敌方AI脚本直到它们接近摄像机为止。一个好的途径来开启或关闭GameObject是使用SetActiveRecursively(false），并且球形或盒型碰撞器设为trigger</p>
-<p>####14. 删除空的Update方法。当通过Assets目录创建新的脚本时，脚本里会包括一个Update方法，当你不使用时删除它</p>
-<h4 id="Unity3d_u7684_u4E00_u4E9B_u5C0F_u7A8D_u95E8"><a href="#Unity3d_u7684_u4E00_u4E9B_u5C0F_u7A8D_u95E8" class="headerlink" title="- Unity3d的一些小窍门"></a>- Unity3d的一些小窍门</h4><p>防止黑屏<br>In script change iPhoneSettings.screenCanDarken to false. This basically does the same as:<br>//Objective-C call [UIApplication sharedApplication].idleTimerDisabled = YES;<br>It prevents the auto lock on iPhone to kick-in.<br>参考：</p>
+</code></pre><h4 id="13-__u5173_u6389_u4E0D_u5FC5_u8981_u7684_u811A_u672C"><a href="#13-__u5173_u6389_u4E0D_u5FC5_u8981_u7684_u811A_u672C" class="headerlink" title="13. 关掉不必要的脚本"></a>13. 关掉不必要的脚本</h4><p>如果可能，将GameObject上不必要的脚本disable掉。如果你有一个大的场景在你的游戏中，并且敌方的位置在数千米意外，这是你可以disable你的敌方AI脚本直到它们接近摄像机为止。一个好的途径来开启或关闭GameObject是使用SetActiveRecursively(false），并且球形或盒型碰撞器设为trigger</p>
+<h4 id="14-__u5220_u9664_u7A7A_u7684Update_u65B9_u6CD5_u3002_u5F53_u901A_u8FC7Assets_u76EE_u5F55_u521B_u5EFA_u65B0_u7684_u811A_u672C_u65F6_uFF0C_u811A_u672C_u91CC_u4F1A_u5305_u62EC_u4E00_u4E2AUpdate_u65B9_u6CD5_uFF0C_u5F53_u4F60_u4E0D_u4F7F_u7528_u65F6_u5220_u9664_u5B83"><a href="#14-__u5220_u9664_u7A7A_u7684Update_u65B9_u6CD5_u3002_u5F53_u901A_u8FC7Assets_u76EE_u5F55_u521B_u5EFA_u65B0_u7684_u811A_u672C_u65F6_uFF0C_u811A_u672C_u91CC_u4F1A_u5305_u62EC_u4E00_u4E2AUpdate_u65B9_u6CD5_uFF0C_u5F53_u4F60_u4E0D_u4F7F_u7528_u65F6_u5220_u9664_u5B83" class="headerlink" title="14. 删除空的Update方法。当通过Assets目录创建新的脚本时，脚本里会包括一个Update方法，当你不使用时删除它"></a>14. 删除空的Update方法。当通过Assets目录创建新的脚本时，脚本里会包括一个Update方法，当你不使用时删除它</h4><h4 id="Unity3d_u7684_u4E00_u4E9B_u5C0F_u7A8D_u95E8"><a href="#Unity3d_u7684_u4E00_u4E9B_u5C0F_u7A8D_u95E8" class="headerlink" title="- Unity3d的一些小窍门"></a>- Unity3d的一些小窍门</h4><p>防止黑屏<br>In script change iPhoneSettings.screenCanDarken to false. This basically does the same as:<br>//Objective-C call [UIApplication sharedApplication].idleTimerDisabled = YES;<br>It prevents the auto lock on iPhone to kick-in.<br>参考：</p>
 <p>1.<a href="http://www.cnblogs.com/veboys/p/4091527.html" target="_blank" rel="external">http://www.cnblogs.com/veboys/p/4091527.html</a></p>
 <p>2.<a href="http://forum.china.unity3d.com/thread-570-1-1.html" target="_blank" rel="external">http://forum.china.unity3d.com/thread-570-1-1.html</a></p>
 <p>— End —</p>
@@ -172,7 +116,7 @@ void Start()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hellogavin88.github.io/2015/04/10/2015-4-10-Unity-Optimize/" data-id="ciipwi1rt000amwvmb3qnapkc" class="article-share-link">Share</a>
+      <a data-url="http://hellogavin88.github.io/2015/04/10/2015-4-10-Unity-Optimize/" data-id="ciipwoduf0009pgvmhua2gjiv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
@@ -210,8 +154,7 @@ void Start()
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>####1. QWER(LOL)</p>
-<ul>
+        <h4 id="1-_QWER_28LOL_29"><a href="#1-_QWER_28LOL_29" class="headerlink" title="1. QWER(LOL)"></a>1. QWER(LOL)</h4><ul>
 <li><p>Q（手性工具）1.拖拽场景 2.按住alt，旋转场景 3.鼠标滚轮缩放场景</p>
 </li>
 <li><p>W（平移工具）蓝色Z轴   绿色Y轴   红色X轴</p>
@@ -221,8 +164,7 @@ void Start()
 <li><p>R（缩放工具） 红绿蓝分别缩放某一轴，黄色小方块缩放整体</p>
 </li>
 </ul>
-<p>####2. 光源</p>
-<ul>
+<h4 id="2-__u5149_u6E90"><a href="#2-__u5149_u6E90" class="headerlink" title="2. 光源"></a>2. 光源</h4><ul>
 <li><p>点光源：照亮某一区域，有层次感</p>
 </li>
 <li><p>方向光：照亮整体区域 ，无层次感</p>
@@ -230,42 +172,34 @@ void Start()
 <li><p>聚光灯：凸显某块区域 ，范围较小</p>
 </li>
 </ul>
-<p>####3. 预设（prefab）</p>
-<p>具有相同属性的物体抽象出来的一个模板，可以用面向对象中的基类来解释，把重复使用的物体作为预制件大大方便了以后的改动。<br>拖动物体到空预设即可创建预设</p>
+<h4 id="3-__u9884_u8BBE_uFF08prefab_uFF09"><a href="#3-__u9884_u8BBE_uFF08prefab_uFF09" class="headerlink" title="3. 预设（prefab）"></a>3. 预设（prefab）</h4><p>具有相同属性的物体抽象出来的一个模板，可以用面向对象中的基类来解释，把重复使用的物体作为预制件大大方便了以后的改动。<br>拖动物体到空预设即可创建预设</p>
 <pre><code>GameObject thePrefab;
 public void Start()
 {
    GameObject instance = Instantiate(thePrefab,transform,position,transform,rotation);
 }
-</code></pre><p>####4. 重力=添加刚体组件</p>
-<p>####5. 简单计时器</p>
-<pre><code>private Single myTimer = 5.0f;
+</code></pre><h4 id="4-__u91CD_u529B_3D_u6DFB_u52A0_u521A_u4F53_u7EC4_u4EF6"><a href="#4-__u91CD_u529B_3D_u6DFB_u52A0_u521A_u4F53_u7EC4_u4EF6" class="headerlink" title="4. 重力=添加刚体组件"></a>4. 重力=添加刚体组件</h4><h4 id="5-__u7B80_u5355_u8BA1_u65F6_u5668"><a href="#5-__u7B80_u5355_u8BA1_u65F6_u5668" class="headerlink" title="5. 简单计时器"></a>5. 简单计时器</h4><pre><code>private Single myTimer = 5.0f;
 public void Update()
 {
     myTimer -= Time.deltaTime;//上一帧的延时
     if (myTimer &lt;= 0)
         Debug.log(&quot;game over！&quot;);
 }
-</code></pre><p>####6. 材质</p>
-<p>工程面板创建一个material原件，将图片资源拖到此组件上，生成材质原件，将材质拖动到需要改变材质的物体上（其实可以直接拖图片到物体上，但是这样就无法设置平铺参数）</p>
-<p>####7. 移动物体</p>
-<p>朝Y方向运动</p>
+</code></pre><h4 id="6-__u6750_u8D28"><a href="#6-__u6750_u8D28" class="headerlink" title="6. 材质"></a>6. 材质</h4><p>工程面板创建一个material原件，将图片资源拖到此组件上，生成材质原件，将材质拖动到需要改变材质的物体上（其实可以直接拖图片到物体上，但是这样就无法设置平铺参数）</p>
+<h4 id="7-__u79FB_u52A8_u7269_u4F53"><a href="#7-__u79FB_u52A8_u7269_u4F53" class="headerlink" title="7. 移动物体"></a>7. 移动物体</h4><p>朝Y方向运动</p>
 <pre><code>Single speed = 1.0f;
 public void Update()
 {
     transform.Translate(new Vector3(0, 0, speed) * Time.deltaTime);
 }
-</code></pre><p>####8. 输入检测</p>
-<p>Update函数中输入</p>
+</code></pre><h4 id="8-__u8F93_u5165_u68C0_u6D4B"><a href="#8-__u8F93_u5165_u68C0_u6D4B" class="headerlink" title="8. 输入检测"></a>8. 输入检测</h4><p>Update函数中输入</p>
 <pre><code>if(Input.GetButtonUp(&quot;Jump&quot;))
 {
     Debug.log(&quot;Space is hit&quot;);
 }
-</code></pre><p>####9. 销毁物体</p>
-<p>载入3秒后销毁名为box的物体，如果销毁自己则为Destroy(gameObject,3)即可</p>
+</code></pre><h4 id="9-__u9500_u6BC1_u7269_u4F53"><a href="#9-__u9500_u6BC1_u7269_u4F53" class="headerlink" title="9. 销毁物体"></a>9. 销毁物体</h4><p>载入3秒后销毁名为box的物体，如果销毁自己则为Destroy(gameObject,3)即可</p>
 <pre><code>Destroy(gameObject.find(&apos;box&apos;),3);
-</code></pre><p>####10. 施加外力(若要恒力，也可以写在update 或者按键响应中)</p>
-<pre><code>public Single power = 50.0f;
+</code></pre><h4 id="10-__u65BD_u52A0_u5916_u529B_28_u82E5_u8981_u6052_u529B_uFF0C_u4E5F_u53EF_u4EE5_u5199_u5728update__u6216_u8005_u6309_u952E_u54CD_u5E94_u4E2D_29"><a href="#10-__u65BD_u52A0_u5916_u529B_28_u82E5_u8981_u6052_u529B_uFF0C_u4E5F_u53EF_u4EE5_u5199_u5728update__u6216_u8005_u6309_u952E_u54CD_u5E94_u4E2D_29" class="headerlink" title="10. 施加外力(若要恒力，也可以写在update 或者按键响应中)"></a>10. 施加外力(若要恒力，也可以写在update 或者按键响应中)</h4><pre><code>public Single power = 50.0f;
 private Rigidbody rb;
 
 public void Start()
@@ -281,7 +215,7 @@ public void Start()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hellogavin88.github.io/2015/04/07/2015-4-7-Unity-Base/" data-id="ciipwi1rg0005mwvms485a063" class="article-share-link">Share</a>
+      <a data-url="http://hellogavin88.github.io/2015/04/07/2015-4-7-Unity-Base/" data-id="ciipwodu20005pgvm375t1bxp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
@@ -321,16 +255,10 @@ public void Start()
       
         <p>###1. Ctrl + i - 渐进搜索</p>
 <p>大多数人都习惯在vs中使用 <strong>“Ctrl + F”</strong> 进行搜索，按下 <strong>“Ctrl + i”</strong> 直接输入要搜索的文字，继续按 <strong>“Ctrl + i”</strong> 会自动跳到下个符合条件的地方，按 <strong>“Ctrl + Shift + i”</strong> 可以反方向搜索，这样避免回溯。</p>
-<p>####2. F3和Shift + F3 –使用以前的关键字查找</p>
-<p>按F3键可以让你重复上次的搜索， <strong>Shift + F3</strong> 可以使用 上次搜索关键字进行反向搜索</p>
-<p>####3. Ctrl + F3 - 搜索当前选择的文本</p>
-<p><strong>Ctrl + Shift + F3</strong> 来进行反向搜索</p>
-<p>####4. Ctrl + Shift + F – 在解决方案里搜索</p>
-<p>####5. Shift + F12 –查找用途</p>
-<p>F12来“转到定义”</p>
-<p>####6. Ctrl + 减号和Shift + Ctrl + 减号–向前/向后定位</p>
-<p>####7. Ctrl + Alt +（向下键）-定位一个打开的文件</p>
-<p>*注：有些时候，vs里面的快捷键会和你本地的一些软件冲突</p>
+<h4 id="2-_F3_u548CShift_+_F3__u2013_u4F7F_u7528_u4EE5_u524D_u7684_u5173_u952E_u5B57_u67E5_u627E"><a href="#2-_F3_u548CShift_+_F3__u2013_u4F7F_u7528_u4EE5_u524D_u7684_u5173_u952E_u5B57_u67E5_u627E" class="headerlink" title="2. F3和Shift + F3 –使用以前的关键字查找"></a>2. F3和Shift + F3 –使用以前的关键字查找</h4><p>按F3键可以让你重复上次的搜索， <strong>Shift + F3</strong> 可以使用 上次搜索关键字进行反向搜索</p>
+<h4 id="3-_Ctrl_+_F3_-__u641C_u7D22_u5F53_u524D_u9009_u62E9_u7684_u6587_u672C"><a href="#3-_Ctrl_+_F3_-__u641C_u7D22_u5F53_u524D_u9009_u62E9_u7684_u6587_u672C" class="headerlink" title="3. Ctrl + F3 - 搜索当前选择的文本"></a>3. Ctrl + F3 - 搜索当前选择的文本</h4><p><strong>Ctrl + Shift + F3</strong> 来进行反向搜索</p>
+<h4 id="4-_Ctrl_+_Shift_+_F__u2013__u5728_u89E3_u51B3_u65B9_u6848_u91CC_u641C_u7D22"><a href="#4-_Ctrl_+_Shift_+_F__u2013__u5728_u89E3_u51B3_u65B9_u6848_u91CC_u641C_u7D22" class="headerlink" title="4. Ctrl + Shift + F – 在解决方案里搜索"></a>4. Ctrl + Shift + F – 在解决方案里搜索</h4><h4 id="5-_Shift_+_F12__u2013_u67E5_u627E_u7528_u9014"><a href="#5-_Shift_+_F12__u2013_u67E5_u627E_u7528_u9014" class="headerlink" title="5. Shift + F12 –查找用途"></a>5. Shift + F12 –查找用途</h4><p>F12来“转到定义”</p>
+<h4 id="6-_Ctrl_+__u51CF_u53F7_u548CShift_+_Ctrl_+__u51CF_u53F7_u2013_u5411_u524D/_u5411_u540E_u5B9A_u4F4D"><a href="#6-_Ctrl_+__u51CF_u53F7_u548CShift_+_Ctrl_+__u51CF_u53F7_u2013_u5411_u524D/_u5411_u540E_u5B9A_u4F4D" class="headerlink" title="6. Ctrl + 减号和Shift + Ctrl + 减号–向前/向后定位"></a>6. Ctrl + 减号和Shift + Ctrl + 减号–向前/向后定位</h4><h4 id="7-_Ctrl_+_Alt_+_uFF08_u5411_u4E0B_u952E_uFF09-_u5B9A_u4F4D_u4E00_u4E2A_u6253_u5F00_u7684_u6587_u4EF6"><a href="#7-_Ctrl_+_Alt_+_uFF08_u5411_u4E0B_u952E_uFF09-_u5B9A_u4F4D_u4E00_u4E2A_u6253_u5F00_u7684_u6587_u4EF6" class="headerlink" title="7. Ctrl + Alt +（向下键）-定位一个打开的文件"></a>7. Ctrl + Alt +（向下键）-定位一个打开的文件</h4><p>*注：有些时候，vs里面的快捷键会和你本地的一些软件冲突</p>
 <p>参考：</p>
 <p>1.<a href="http://msdn.microsoft.com/zh-cn/gg232829" target="_blank" rel="external">http://msdn.microsoft.com/zh-cn/gg232829</a></p>
 <p>2.<a href="http://blogs.msdn.com/b/scottgu/archive/2011/10/08/visual-studio-1.aspx" target="_blank" rel="external">http://blogs.msdn.com/b/scottgu/archive/2011/10/08/visual-studio-1.aspx</a></p>
@@ -339,7 +267,7 @@ public void Start()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hellogavin88.github.io/2014/12/23/2014-12-23-vs/" data-id="ciipwi1rv000dmwvmh4gjgcz5" class="article-share-link">Share</a>
+      <a data-url="http://hellogavin88.github.io/2014/12/23/2014-12-23-vs/" data-id="ciipwodui000cpgvm4jihsawj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
@@ -411,7 +339,7 @@ public void Start()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hellogavin88.github.io/2014/12/22/2014-12-22-string/" data-id="ciipwi1ry000hmwvmexknq678" class="article-share-link">Share</a>
+      <a data-url="http://hellogavin88.github.io/2014/12/22/2014-12-22-string/" data-id="ciipwodul000gpgvm1at05q3w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
@@ -483,7 +411,7 @@ public void Start()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hellogavin88.github.io/2014/12/18/2014-12-18-boxing/" data-id="ciipwi1s1000lmwvm3ryih68z" class="article-share-link">Share</a>
+      <a data-url="http://hellogavin88.github.io/2014/12/18/2014-12-18-boxing/" data-id="ciipwodup000kpgvmyar6p9nb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
@@ -537,7 +465,7 @@ public void Start()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hellogavin88.github.io/2014/12/18/2014-12-18-Object/" data-id="ciipwi1s5000omwvmm9v9jgbi" class="article-share-link">Share</a>
+      <a data-url="http://hellogavin88.github.io/2014/12/18/2014-12-18-Object/" data-id="ciipwodus000npgvmxtmprz26" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
@@ -576,8 +504,7 @@ public void Start()
     <div class="article-entry" itemprop="articleBody">
       
         <p>在C++中，有三种类型的循环语句：for, while, 和do…while， 但是在一般应用中作循环时， 我们可能用for和while要多一些，do…while相对不受重视。但是，最近在读我们项目的代码时，却发现了do…while的一些十分聪明的用法，不是用来做循环，而是用作其他来提高代码的健壮性。</p>
-<p>####1. do…while(0)消除goto语句。####</p>
-<p>通常，如果在一个函数中开始要分配一些资源，然后在中途执行过程中如果遇到错误则退出函数，当然，退出前先释放资源，我们的代码可能是这样：</p>
+<h4 id="1-_do_u2026while_280_29_u6D88_u9664goto_u8BED_u53E5_u3002"><a href="#1-_do_u2026while_280_29_u6D88_u9664goto_u8BED_u53E5_u3002" class="headerlink" title="1. do…while(0)消除goto语句。"></a>1. do…while(0)消除goto语句。</h4><p>通常，如果在一个函数中开始要分配一些资源，然后在中途执行过程中如果遇到错误则退出函数，当然，退出前先释放资源，我们的代码可能是这样：</p>
 <p>version 1</p>
 <pre><code>bool Execute()
 {
@@ -682,7 +609,7 @@ else
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hellogavin88.github.io/2014/12/16/2014-12-16-dowhile/" data-id="ciipwi1s9000rmwvmvasybqy1" class="article-share-link">Share</a>
+      <a data-url="http://hellogavin88.github.io/2014/12/16/2014-12-16-dowhile/" data-id="ciipwoduv000qpgvmgdegldd5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li></ul>
@@ -738,7 +665,127 @@ else
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hellogavin88.github.io/2014/12/15/2014-12-15-10years/" data-id="ciipwi1sc000wmwvmdk7quk26" class="article-share-link">Share</a>
+      <a data-url="http://hellogavin88.github.io/2014/12/15/2014-12-15-10years/" data-id="ciipwodux000vpgvmaddqq94i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2014-12-11-CsharpName" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/11/2014-12-11-CsharpName/" class="article-date">
+  <time datetime="2014-12-11T06:26:00.000Z" itemprop="datePublished">2014-12-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/coding/">coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/11/2014-12-11-CsharpName/">C#命名规则</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-__u7528Pascal_u89C4_u5219_u6765_u547D_u540D_u65B9_u6CD5_u548C_u7C7B_u3002"><a href="#1-__u7528Pascal_u89C4_u5219_u6765_u547D_u540D_u65B9_u6CD5_u548C_u7C7B_u3002" class="headerlink" title="1. 用Pascal规则来命名方法和类。"></a>1. 用Pascal规则来命名方法和类。</h4><pre><code>public class DataGrid 
+{ 
+  public void DataBind() 
+  { 
+  } 
+} 
+</code></pre><h4 id="2-_private_u3001protected_u4EE5_u53CA_u65B9_u6CD5_u53C2_u6570_u4F7F_u7528_Camel_uFF0Cpublic_u4F7F_u7528Pascal_28_u53D8_u91CF_u5C3D_u91CF_u4F7F_u7528_u5C5E_u6027_29"><a href="#2-_private_u3001protected_u4EE5_u53CA_u65B9_u6CD5_u53C2_u6570_u4F7F_u7528_Camel_uFF0Cpublic_u4F7F_u7528Pascal_28_u53D8_u91CF_u5C3D_u91CF_u4F7F_u7528_u5C5E_u6027_29" class="headerlink" title="2. private、protected以及方法参数使用 Camel，public使用Pascal(变量尽量使用属性)."></a>2. private、protected以及方法参数使用 Camel，public使用Pascal(变量尽量使用属性).</h4><pre><code>public class Product 
+{ 
+  public string ProductUrl;
+  private string _productId; 
+  protected string _productName; 
+  public void AddProduct(string productId,string productName) 
+  { 
+  } 
+} 
+</code></pre><h4 id="3-__u63A5_u53E3_u7684_u540D_u79F0_u52A0_u524D_u7F00__u201CI_u201D_u3002"><a href="#3-__u63A5_u53E3_u7684_u540D_u79F0_u52A0_u524D_u7F00__u201CI_u201D_u3002" class="headerlink" title="3. 接口的名称加前缀 “I”。"></a>3. 接口的名称加前缀 “I”。</h4><pre><code>public interface IConvertible 
+{ 
+  byte ToByte(); 
+} 
+</code></pre><h4 id="4-__u65B9_u6CD5_u6CE8_u91CA///"><a href="#4-__u65B9_u6CD5_u6CE8_u91CA///" class="headerlink" title="4. 方法注释///"></a>4. 方法注释///</h4><pre><code>/// &lt;summary&gt;
+/// 
+/// &lt;/summary&gt;
+</code></pre><h4 id="5-__u81EA_u5B9A_u4E49_u7684_u5C5E_u6027_u4EE5_u201CAttribute_u201D_u7ED3_u5C3E_u3002"><a href="#5-__u81EA_u5B9A_u4E49_u7684_u5C5E_u6027_u4EE5_u201CAttribute_u201D_u7ED3_u5C3E_u3002" class="headerlink" title="5. 自定义的属性以“Attribute”结尾。"></a>5. 自定义的属性以“Attribute”结尾。</h4><pre><code>public class TableAttribute:Attribute 
+{ 
+} 
+</code></pre><h4 id="6-__u81EA_u5B9A_u4E49_u7684_u5F02_u5E38_u4EE5Exception_u7ED3_u5C3E_u3002"><a href="#6-__u81EA_u5B9A_u4E49_u7684_u5F02_u5E38_u4EE5Exception_u7ED3_u5C3E_u3002" class="headerlink" title="6. 自定义的异常以Exception结尾。"></a>6. 自定义的异常以Exception结尾。</h4><pre><code>public class NullEmptyException:Exception 
+{ 
+} 
+</code></pre><h4 id="7-__u65B9_u6CD5_u7684_u547D_u540D_u3002_u4E00_u822C_u5C06_u5176_u547D_u540D_u4E3A_u52A8_u5BBE_u77ED_u8BED_u3002"><a href="#7-__u65B9_u6CD5_u7684_u547D_u540D_u3002_u4E00_u822C_u5C06_u5176_u547D_u540D_u4E3A_u52A8_u5BBE_u77ED_u8BED_u3002" class="headerlink" title="7. 方法的命名。一般将其命名为动宾短语。"></a>7. 方法的命名。一般将其命名为动宾短语。</h4><pre><code>public class File 
+{ 
+  public void CreateFile(string filePath) 
+  { 
+  } 
+  public void GetPath(string path) 
+  { 
+  } 
+} 
+</code></pre><h4 id="8-__u5C40_u90E8_u53D8_u91CF_u7684_u540D_u79F0_u8981_u6709_u610F_u4E49_u3002__u4E0D_u8981_u7528x_uFF0Cy_uFF0Cz_u7B49_u7B49_uFF0C_u7528For_u5FAA_u73AF_u53D8_u91CF_u4E2D_u53EF_u4F7F_u7528i_2C_j_2C_k_2C_l_2C_m_2C_n_u3002"><a href="#8-__u5C40_u90E8_u53D8_u91CF_u7684_u540D_u79F0_u8981_u6709_u610F_u4E49_u3002__u4E0D_u8981_u7528x_uFF0Cy_uFF0Cz_u7B49_u7B49_uFF0C_u7528For_u5FAA_u73AF_u53D8_u91CF_u4E2D_u53EF_u4F7F_u7528i_2C_j_2C_k_2C_l_2C_m_2C_n_u3002" class="headerlink" title="8. 局部变量的名称要有意义。 不要用x，y，z等等，用For循环变量中可使用i, j, k, l, m, n。"></a>8. 局部变量的名称要有意义。 不要用x，y，z等等，用For循环变量中可使用i, j, k, l, m, n。</h4><pre><code>public class User 
+{ 
+  public void GetUser() 
+  { 
+    string[] userIds={&quot;ziv&quot;,&quot;zorywa&quot;,&quot;zlh&quot;}; 
+    for(int i=0,k=userIds.Length;i&lt;k;i++) 
+    { 
+    } 
+  } 
+} 
+</code></pre><h4 id="9-__u6240_u6709_u7684_u6210_u5458_u53D8_u91CF_u58F0_u660E_u5728_u7C7B_u7684_u9876_u7AEF_u3002"><a href="#9-__u6240_u6709_u7684_u6210_u5458_u53D8_u91CF_u58F0_u660E_u5728_u7C7B_u7684_u9876_u7AEF_u3002" class="headerlink" title="9. 所有的成员变量声明在类的顶端。"></a>9. 所有的成员变量声明在类的顶端。</h4><pre><code>public class Product 
+{ 
+  private string _productId; 
+  private string _productName; 
+  public void AddProduct(string productId,string productName) 
+  { 
+  } 
+} 
+</code></pre><h4 id="10-__u7528_u6709_u610F_u4E49_u7684_u540D_u5B57_u547D_u540Dnamespace_uFF0C_u5982_uFF1A_u516C_u53F8_u540D_u3001_u4EA7_u54C1_u540D_u3002"><a href="#10-__u7528_u6709_u610F_u4E49_u7684_u540D_u5B57_u547D_u540Dnamespace_uFF0C_u5982_uFF1A_u516C_u53F8_u540D_u3001_u4EA7_u54C1_u540D_u3002" class="headerlink" title="10. 用有意义的名字命名namespace，如：公司名、产品名。"></a>10. 用有意义的名字命名namespace，如：公司名、产品名。</h4><pre><code>namespace Zivsoft//公司命名 
+{ 
+} 
+namespace ERP//产品命名 
+{ 
+} 
+</code></pre><h4 id="11_uFF0E__u5EFA_u8BAE_u5C40_u90E8_u53D8_u91CF_u5728_u6700_u63A5_u8FD1_u4F7F_u7528_u5B83_u65F6_u518D_u58F0_u660E_u3002"><a href="#11_uFF0E__u5EFA_u8BAE_u5C40_u90E8_u53D8_u91CF_u5728_u6700_u63A5_u8FD1_u4F7F_u7528_u5B83_u65F6_u518D_u58F0_u660E_u3002" class="headerlink" title="11． 建议局部变量在最接近使用它时再声明。"></a>11． 建议局部变量在最接近使用它时再声明。</h4><h4 id="12-__u4F7F_u7528_u67D0_u4E2A_u63A7_u4EF6_u7684_u503C_u65F6_uFF0C_u5C3D_u91CF_u547D_u540D_u5C40_u90E8_u53D8_u91CF_u3002"><a href="#12-__u4F7F_u7528_u67D0_u4E2A_u63A7_u4EF6_u7684_u503C_u65F6_uFF0C_u5C3D_u91CF_u547D_u540D_u5C40_u90E8_u53D8_u91CF_u3002" class="headerlink" title="12. 使用某个控件的值时，尽量命名局部变量。"></a>12. 使用某个控件的值时，尽量命名局部变量。</h4><pre><code>public string GetTitle() 
+{ 
+  string title=lbl_Title.Text; 
+  return title; 
+} 
+</code></pre><h4 id="14-__u628A_u5F15_u7528_u7684_u7CFB_u7EDF_u7684namespace_u548C_u81EA_u5B9A_u4E49_u6216_u7B2C_u4E09_u65B9_u7684_u7528_u4E00_u4E2A_u6362_u884C_u628A_u5B83_u4EEC_u5206_u5F00_u3002"><a href="#14-__u628A_u5F15_u7528_u7684_u7CFB_u7EDF_u7684namespace_u548C_u81EA_u5B9A_u4E49_u6216_u7B2C_u4E09_u65B9_u7684_u7528_u4E00_u4E2A_u6362_u884C_u628A_u5B83_u4EEC_u5206_u5F00_u3002" class="headerlink" title="14. 把引用的系统的namespace和自定义或第三方的用一个换行把它们分开。"></a>14. 把引用的系统的namespace和自定义或第三方的用一个换行把它们分开。</h4><pre><code>using System; 
+using System.Web.UI; 
+using System.Windows.Forms; 
+using CSharpCode; 
+using CSharpCode.Style; 
+</code></pre><h4 id="15-__u6587_u4EF6_u540D_u8981_u80FD_u53CD_u5E94_u7C7B_u7684_u5185_u5BB9_uFF0C_u6700_u597D_u662F_u548C_u7C7B_u540C_u540D_uFF0C_u4E00_u4E2A_u6587_u4EF6_u4E2D_u4E00_u4E2A_u7C7B_u6216_u4E00_u7EC4_u5173_u8FDE_u7C7B_u3002"><a href="#15-__u6587_u4EF6_u540D_u8981_u80FD_u53CD_u5E94_u7C7B_u7684_u5185_u5BB9_uFF0C_u6700_u597D_u662F_u548C_u7C7B_u540C_u540D_uFF0C_u4E00_u4E2A_u6587_u4EF6_u4E2D_u4E00_u4E2A_u7C7B_u6216_u4E00_u7EC4_u5173_u8FDE_u7C7B_u3002" class="headerlink" title="15. 文件名要能反应类的内容，最好是和类同名，一个文件中一个类或一组关连类。"></a>15. 文件名要能反应类的内容，最好是和类同名，一个文件中一个类或一组关连类。</h4><h4 id="16-__u76EE_u5F55_u7ED3_u6784_u4E2D_u8981_u53CD_u5E94_u51FAnamespace_u7684_u5C42_u6B21_u3002"><a href="#16-__u76EE_u5F55_u7ED3_u6784_u4E2D_u8981_u53CD_u5E94_u51FAnamespace_u7684_u5C42_u6B21_u3002" class="headerlink" title="16. 目录结构中要反应出namespace的层次。"></a>16. 目录结构中要反应出namespace的层次。</h4><h4 id="17-__u5927_u62EC_u53F7_u201D_7B_u201C_u8981_u65B0_u8D77_u4E00_u884C_u3002"><a href="#17-__u5927_u62EC_u53F7_u201D_7B_u201C_u8981_u65B0_u8D77_u4E00_u884C_u3002" class="headerlink" title="17. 大括号”{“要新起一行。"></a>17. 大括号”{“要新起一行。</h4><pre><code>public Sample() 
+{ 
+// 
+// TODO: 在此处添加构造函数逻辑 
+// 
+}
+</code></pre><h4 id="18-__u4EE3_u7801_u5757_u63A7_u5236__23region__23endregion"><a href="#18-__u4EE3_u7801_u5757_u63A7_u5236__23region__23endregion" class="headerlink" title="18. 代码块控制 #region  #endregion"></a>18. 代码块控制 #region  #endregion</h4><p>— End —</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellogavin88.github.io/2014/12/11/2014-12-11-CsharpName/" data-id="ciipwodtr0000pgvmor5p0nv0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
@@ -776,41 +823,34 @@ else
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>####故事一：</p>
-<p>背景介绍：RT是一个外包公司，ZWZX是项目承接公司，YD是甲方。</p>
+        <h4 id="u6545_u4E8B_u4E00_uFF1A"><a href="#u6545_u4E8B_u4E00_uFF1A" class="headerlink" title="故事一："></a>故事一：</h4><p>背景介绍：RT是一个外包公司，ZWZX是项目承接公司，YD是甲方。</p>
 <p>RT公司每天下班的时候都会接到ZWZX负责人的电话，询问一天的工作情况，然后布置任务要求晚上加班做完，RT公司的员工很无奈也很气愤因为每天都要加班，员工们就问项目经理：“为什么天天加班赶需求，今天才提一个需求，明天就要上线，还让不让人活了?” 项目经理无奈的说：“我有什么办法啊？这是人家ZWZX负责人说的啊，对方逼得紧。”</p>
 <p>多次以后项目经理也忍不住了，就问ZWZX的负责人怎么天天这样啊，ZWZX的负责人就说了:”明天就要向YD的负责人展示这个页面，我也没有办法啊？YD那边老总就是这么要求的，我怎么办，我也不想这样啊？”</p>
 <p>然后RT的项目经理实在受不了了就辞职了，新上任的项目经理又会走他的老路，因为从开始我们就被培养“满足客户的需求是最重要的”。RT的员工也就这样一直抱怨着，一直忍受着。天天在心里咒骂YD的老总真是没有人性，不拿人当人看啊！</p>
 <p>人换了一批又一批，加班也就慢慢的变成了应该的，你不加班说明你不敬业，不合格。</p>
-<p>####故事二：</p>
-<p>IE6一直存活着，所有的前端开发人员都痛恨它，都不想兼容它，可是产品经理看到IE6的市场占有率还是这么高，就会要求前端开发人员必须兼容IE6。</p>
+<h4 id="u6545_u4E8B_u4E8C_uFF1A"><a href="#u6545_u4E8B_u4E8C_uFF1A" class="headerlink" title="故事二："></a>故事二：</h4><p>IE6一直存活着，所有的前端开发人员都痛恨它，都不想兼容它，可是产品经理看到IE6的市场占有率还是这么高，就会要求前端开发人员必须兼容IE6。</p>
 <p>矛盾又来了，就像故事一一样，前端开发人员天天抱怨，产品经理也天天抱怨，但是面对IE6的市场份额，产品经理会劝开发人员说：“我有什么办法啊？IE6的市场份额就是这么高，不兼容怎么办啊？我也不想啊！” 开发人员也就这样忍受着，然后不断地抱怨用IE6的用户低端，没文化，怎么还用IE6啊！天天兼容IE6就够烦的了，还怎么创新啊！</p>
 <p>这两个故事里出现的问题到底是谁的错误引起的？</p>
 <p>故事一的罪魁祸首是YD的老总吗？</p>
 <p>故事二的罪魁祸首是那些还用着IE6的用户吗？</p>
-<p>####从这两个嫌疑最大的罪魁祸首眼中看一下这两个故事：</p>
-<p>####故事一：</p>
-<p>我是YD的老总，我要建立一个网站，找到了ZWZX公司，签订了合同，我提需求他们实现。</p>
+<h4 id="u4ECE_u8FD9_u4E24_u4E2A_u5ACC_u7591_u6700_u5927_u7684_u7F6A_u9B41_u7978_u9996_u773C_u4E2D_u770B_u4E00_u4E0B_u8FD9_u4E24_u4E2A_u6545_u4E8B_uFF1A"><a href="#u4ECE_u8FD9_u4E24_u4E2A_u5ACC_u7591_u6700_u5927_u7684_u7F6A_u9B41_u7978_u9996_u773C_u4E2D_u770B_u4E00_u4E0B_u8FD9_u4E24_u4E2A_u6545_u4E8B_uFF1A" class="headerlink" title="从这两个嫌疑最大的罪魁祸首眼中看一下这两个故事："></a>从这两个嫌疑最大的罪魁祸首眼中看一下这两个故事：</h4><h4 id="u6545_u4E8B_u4E00_uFF1A-1"><a href="#u6545_u4E8B_u4E00_uFF1A-1" class="headerlink" title="故事一："></a>故事一：</h4><p>我是YD的老总，我要建立一个网站，找到了ZWZX公司，签订了合同，我提需求他们实现。</p>
 <p>我不懂制作网站，可是我才思敏捷，创意无限，不停的会有好点子从我的脑海里蹦出来，每当有一个好点子蹦出来后，我都会给ZWZX公司的负责人讲清楚我的想法，让他实现，开始我不知道做一个页面需要多长时间。第一次我试探性的说了一周必须把我这个点子做出来，ZWZX公司负责人很痛快的答应了，一周后我果然看到了这个功能。</p>
 <p>可是会不会我给他们的时间太长了？对！肯定是，要不也不会答应的这么痛快。这些人啊！天天就是想拖时间，好多骗我点钱。</p>
 <p>点子又来了，这次我要求5天做出来，这个点子和上个点子类似，我倒要看看5天能不能做出来~ ZWZX公司负责人一副痛苦的表情，我会不会逼的太紧了，5天是不是真的做不出来？到时候看看吧，如果5天没做出来估计是我给的时间太少了。</p>
 <p>5天过去了ZWZX公司的负责人很高兴的拿出了我要的功能实现，哎，看来开始真的骗了我两天。就是不知道5天会不会还是多了啊？下次给3天~</p>
 <p>又拿出来了，虽然他装的好像时间太紧似的，可别以为我不知道，你第一个功能最多3天就做出来了，我还给了你7天的项目经费，你们多赚了我多少啊！！！！ 真是没良心。 下次1天！！！</p>
 <p>啊啊啊啊啊啊啊啊!!! 1天就出来了，这些人。。。。。 有没有良心，原来做这个这么简单，以后就给1天，不 ！ 一天N个功能。</p>
-<p>####故事二：</p>
-<p>我买了个电脑，没什么别的用途，就是打开电脑上上网，上上QQ和儿子聊聊天，QQ是儿子给我装上的，这样我就可以和他视频了。有一次QQ提醒我说我的QQ版本太低了，不能视频了，我打电话问儿子，儿子说按提示升级一下QQ就行了，呵呵，我按QQ的提示，儿子的指示一步一步的升级QQ成功了，看来电脑也不难啊！</p>
-<p>####到这里您认为开始的两个故事的罪魁祸首是谁啊？</p>
-<p>我们一直以加班，甚至通宵去满足客户不合理的要求，只因为他是客户。只因为人人都认为满足客户的要求是我们最大的 价值，可是不合理的要求不能去拒绝吗？套用刘欢说的一句话“我们是不是活的应该有些尊严”，一味的迎合客户，只会让我们自己越来越痛苦，反而得不到用户的尊重，肯定。</p>
+<h4 id="u6545_u4E8B_u4E8C_uFF1A-1"><a href="#u6545_u4E8B_u4E8C_uFF1A-1" class="headerlink" title="故事二："></a>故事二：</h4><p>我买了个电脑，没什么别的用途，就是打开电脑上上网，上上QQ和儿子聊聊天，QQ是儿子给我装上的，这样我就可以和他视频了。有一次QQ提醒我说我的QQ版本太低了，不能视频了，我打电话问儿子，儿子说按提示升级一下QQ就行了，呵呵，我按QQ的提示，儿子的指示一步一步的升级QQ成功了，看来电脑也不难啊！</p>
+<h4 id="u5230_u8FD9_u91CC_u60A8_u8BA4_u4E3A_u5F00_u59CB_u7684_u4E24_u4E2A_u6545_u4E8B_u7684_u7F6A_u9B41_u7978_u9996_u662F_u8C01_u554A_uFF1F"><a href="#u5230_u8FD9_u91CC_u60A8_u8BA4_u4E3A_u5F00_u59CB_u7684_u4E24_u4E2A_u6545_u4E8B_u7684_u7F6A_u9B41_u7978_u9996_u662F_u8C01_u554A_uFF1F" class="headerlink" title="到这里您认为开始的两个故事的罪魁祸首是谁啊？"></a>到这里您认为开始的两个故事的罪魁祸首是谁啊？</h4><p>我们一直以加班，甚至通宵去满足客户不合理的要求，只因为他是客户。只因为人人都认为满足客户的要求是我们最大的 价值，可是不合理的要求不能去拒绝吗？套用刘欢说的一句话“我们是不是活的应该有些尊严”，一味的迎合客户，只会让我们自己越来越痛苦，反而得不到用户的尊重，肯定。</p>
 <p>我一直有个疑惑，很多人说网站不支持IE6，而选择让用户去升级IE，这样的用户体验不好！如果按照按照这个逻辑，是不是我们都应该是Web应用，而且都应该是IE6下的Web应用呢？为什么微软还要出WIN8，一直XP不是挺好的吗？让用户升级系统，用户体验多么不好啊？QQ，360，搜狗输入法，等等客户端软件用户体验不都不好吗？ 都还要用户下载。</p>
 <p>实在搞不懂为什么我们做个东西非要去支持IE6呢？检测到用户是IE6，给个提示，给个升级链接不就行了？ 这样做用户体验是有多么不好吗？ 你天天去支持IE6，还要天天磨叽用户使用IE6，你不觉的很矛盾吗？再说我一个普通用户，你如果不提醒，我怎么知道要升级IE6啊？</p>
-<p>####对于遭遇了故事一，故事二的人只能送上一句话“哀其不幸，怒其不争！”</p>
-<p>原文链接：<a href="http://hfcc8685.github.com/blog/2012/04/19/shui-zhi-cuo/" target="_blank" rel="external">http://hfcc8685.github.com/blog/2012/04/19/shui-zhi-cuo/</a></p>
+<h4 id="u5BF9_u4E8E_u906D_u9047_u4E86_u6545_u4E8B_u4E00_uFF0C_u6545_u4E8B_u4E8C_u7684_u4EBA_u53EA_u80FD_u9001_u4E0A_u4E00_u53E5_u8BDD_u201C_u54C0_u5176_u4E0D_u5E78_uFF0C_u6012_u5176_u4E0D_u4E89_uFF01_u201D"><a href="#u5BF9_u4E8E_u906D_u9047_u4E86_u6545_u4E8B_u4E00_uFF0C_u6545_u4E8B_u4E8C_u7684_u4EBA_u53EA_u80FD_u9001_u4E0A_u4E00_u53E5_u8BDD_u201C_u54C0_u5176_u4E0D_u5E78_uFF0C_u6012_u5176_u4E0D_u4E89_uFF01_u201D" class="headerlink" title="对于遭遇了故事一，故事二的人只能送上一句话“哀其不幸，怒其不争！”"></a>对于遭遇了故事一，故事二的人只能送上一句话“哀其不幸，怒其不争！”</h4><p>原文链接：<a href="http://hfcc8685.github.com/blog/2012/04/19/shui-zhi-cuo/" target="_blank" rel="external">http://hfcc8685.github.com/blog/2012/04/19/shui-zhi-cuo/</a></p>
 <p>— End —</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hellogavin88.github.io/2014/12/11/2014-12-11-whoesError/" data-id="ciipwi1sg0010mwvmbwnmjjjj" class="article-share-link">Share</a>
+      <a data-url="http://hellogavin88.github.io/2014/12/11/2014-12-11-whoesError/" data-id="ciipwoduz000zpgvmy9k0bfhk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
@@ -835,7 +875,7 @@ else
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/editor/">editor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reship/">reship</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reship-coding/">reship,coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unity/">unity</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/why/">why</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/works/">works</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/editor/">editor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reship/">reship</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reship-coding/">reship,coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unity/">unity</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/why/">why</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -844,7 +884,7 @@ else
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActionScript/">ActionScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">unity</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/code/">code</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unity/">unity</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -853,7 +893,7 @@ else
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ActionScript/" style="font-size: 10px;">ActionScript</a> <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/unity/" style="font-size: 10px;">unity</a>
+      <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/unity/" style="font-size: 10px;">unity</a>
     </div>
   </div>
 
@@ -862,7 +902,7 @@ else
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">9</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">9</span></li></ul>
     </div>
   </div>
 
@@ -872,10 +912,6 @@ else
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2015/11/12/2014-11-28-works-Maze/">Maze</a>
-          </li>
         
           <li>
             <a href="/2015/04/10/2015-4-10-Unity-Optimize/">Unity项目优化</a>
@@ -891,6 +927,10 @@ else
         
           <li>
             <a href="/2014/12/22/2014-12-22-string/">string是引用类型还是值类型</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/18/2014-12-18-boxing/">为什么装箱拆箱有性能损失</a>
           </li>
         
       </ul>
