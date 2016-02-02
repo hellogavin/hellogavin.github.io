@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://hellogavin88.github.io/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hellogavin88.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-2015-4-10-Unity-Optimize" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/10/2015-4-10-Unity-Optimize/" class="article-date">
+  <time datetime="2015-04-10T02:20:00.000Z" itemprop="datePublished">2015-04-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/unity/">unity</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/10/2015-4-10-Unity-Optimize/">Unity项目优化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-__u5982_u679C_u6CA1_u5FC5_u8981_u6BCF_u5E27_u90FD_u5904_u7406_u7684_u8BDD_uFF0C_u53EF_u4EE5_u9694_u51E0_u5E27_u518D_u5904_u7406"><a href="#1-__u5982_u679C_u6CA1_u5FC5_u8981_u6BCF_u5E27_u90FD_u5904_u7406_u7684_u8BDD_uFF0C_u53EF_u4EE5_u9694_u51E0_u5E27_u518D_u5904_u7406" class="headerlink" title="1. 如果没必要每帧都处理的话，可以隔几帧再处理"></a>1. 如果没必要每帧都处理的话，可以隔几帧再处理</h4><pre><code>void Update()
+{
+    if(Time.frameCount%6==0)
+    {
+        DoSomething();
+    }
+}
+</code></pre><h4 id="2-__u5B9A_u65F6_u91CD_u590D_u8C03_u7528_u53EF_u4EE5_u4F7F_u7528InvokeRepeating_u51FD_u6570_u5B9E_u73B0_uFF0C_u6BD4_u5982_uFF0C_u542F_u52A80-5_u79D2_u540E_u6BCF_u96941_u79D2_u6267_u884C_u4E00_u6B21_DoSomeThing__u51FD_u6570"><a href="#2-__u5B9A_u65F6_u91CD_u590D_u8C03_u7528_u53EF_u4EE5_u4F7F_u7528InvokeRepeating_u51FD_u6570_u5B9E_u73B0_uFF0C_u6BD4_u5982_uFF0C_u542F_u52A80-5_u79D2_u540E_u6BCF_u96941_u79D2_u6267_u884C_u4E00_u6B21_DoSomeThing__u51FD_u6570" class="headerlink" title="2. 定时重复调用可以使用InvokeRepeating函数实现，比如，启动0.5秒后每隔1秒执行一次 DoSomeThing 函数"></a>2. 定时重复调用可以使用InvokeRepeating函数实现，比如，启动0.5秒后每隔1秒执行一次 DoSomeThing 函数</h4><pre><code>void Start()
+{
+    InvokeRepeating(&quot;DoSomeThing&quot;, 0.5f, 1.0f);
+}
+</code></pre><h4 id="3-__u5C11_u4F7F_u7528_u4E34_u65F6_u53D8_u91CF_uFF0C_u7279_u522B_u662F_u5728Update_OnGUI_u7B49_u5B9E_u65F6_u8C03_u7528_u7684_u51FD_u6570_u4E2D"><a href="#3-__u5C11_u4F7F_u7528_u4E34_u65F6_u53D8_u91CF_uFF0C_u7279_u522B_u662F_u5728Update_OnGUI_u7B49_u5B9E_u65F6_u8C03_u7528_u7684_u51FD_u6570_u4E2D" class="headerlink" title="3. 少使用临时变量，特别是在Update OnGUI等实时调用的函数中"></a>3. 少使用临时变量，特别是在Update OnGUI等实时调用的函数中</h4><h4 id="4-__u4E3B_u52A8_u8FDB_u884C_u5783_u573E_u56DE_u6536"><a href="#4-__u4E3B_u52A8_u8FDB_u884C_u5783_u573E_u56DE_u6536" class="headerlink" title="4. 主动进行垃圾回收"></a>4. 主动进行垃圾回收</h4><h4 id="5-__u4F18_u5316_u6570_u5B66_u8FD0_u7B97_uFF0C_u5C3D_u91CF_u907F_u514D_u4F7F_u7528float_uFF0C_u800C_u4F7F_u7528int_uFF0C_u7279_u522B_u662F_u5728Update_u51FD_u6570_u4E2D_uFF0C_u5C3D_u91CF_u5C11_u7528_u590D_u6742_u7684_u6570_u5B66_u51FD_u6570_uFF0C_u6BD4_u5982sin_2Ccos_u7B49_u51FD_u6570_u3002_u6539_u9664_u6CD5_u4E3A_u4E58_u6CD5"><a href="#5-__u4F18_u5316_u6570_u5B66_u8FD0_u7B97_uFF0C_u5C3D_u91CF_u907F_u514D_u4F7F_u7528float_uFF0C_u800C_u4F7F_u7528int_uFF0C_u7279_u522B_u662F_u5728Update_u51FD_u6570_u4E2D_uFF0C_u5C3D_u91CF_u5C11_u7528_u590D_u6742_u7684_u6570_u5B66_u51FD_u6570_uFF0C_u6BD4_u5982sin_2Ccos_u7B49_u51FD_u6570_u3002_u6539_u9664_u6CD5_u4E3A_u4E58_u6CD5" class="headerlink" title="5. 优化数学运算，尽量避免使用float，而使用int，特别是在Update函数中，尽量少用复杂的数学函数，比如sin,cos等函数。改除法为乘法"></a>5. 优化数学运算，尽量避免使用float，而使用int，特别是在Update函数中，尽量少用复杂的数学函数，比如sin,cos等函数。改除法为乘法</h4><h4 id="6-__u538B_u7F29_Mesh"><a href="#6-__u538B_u7F29_Mesh" class="headerlink" title="6. 压缩 Mesh"></a>6. 压缩 Mesh</h4><p>导入 3D 模型之后，在不影响显示效果的前提下，最好打开 Mesh Compression。  Off, Low, Medium, High 这几个选项，可酌情选取。对于单个Mesh最好使用一个材质。</p>
+<h4 id="7-__u8FD0_u884C_u65F6_u5C3D_u91CF_u51CF_u5C11_Tris__u548C_Draw_Calls"><a href="#7-__u8FD0_u884C_u65F6_u5C3D_u91CF_u51CF_u5C11_Tris__u548C_Draw_Calls" class="headerlink" title="7. 运行时尽量减少 Tris 和 Draw Calls"></a>7. 运行时尽量减少 Tris 和 Draw Calls</h4><p>预览的时候，可点开 Stats，查看图形渲染的开销情况。特别注意 Tris 和 Draw Calls 这两个参数。  一般来说，要做到：  Tris 保持在 7.5k 以下  ，Draw Calls 保持在 35 以下。</p>
+<h4 id="8-__u907F_u514D_u5927_u91CF_u4F7F_u7528_Unity__u81EA_u5E26_u7684_Sphere__u7B49_u5185_u5EFA_Mesh"><a href="#8-__u907F_u514D_u5927_u91CF_u4F7F_u7528_Unity__u81EA_u5E26_u7684_Sphere__u7B49_u5185_u5EFA_Mesh" class="headerlink" title="8. 避免大量使用 Unity 自带的 Sphere 等内建 Mesh"></a>8. 避免大量使用 Unity 自带的 Sphere 等内建 Mesh</h4><p>Unity 内建的 Mesh，多边形的数量比较大，如果物体不要求特别圆滑，可导入其他的简单3D模型代替。</p>
+<h4 id="9-__u4E0D_u8981_u4F7F_u7528SendMessage_u4E4B_u7C7B_u7684_u65B9_u6CD5_uFF0C_u4ED6_u6BD4_u76F4_u63A5_u8C03_u7528_u65B9_u6CD5_u6162_u4E86100_u500D_uFF0C_u4F60_u53EF_u4EE5_u76F4_u63A5_u8C03_u7528_u6216_u901A_u8FC7C_23_u7684_u59D4_u6258_u6765_u5B9E_u73B0"><a href="#9-__u4E0D_u8981_u4F7F_u7528SendMessage_u4E4B_u7C7B_u7684_u65B9_u6CD5_uFF0C_u4ED6_u6BD4_u76F4_u63A5_u8C03_u7528_u65B9_u6CD5_u6162_u4E86100_u500D_uFF0C_u4F60_u53EF_u4EE5_u76F4_u63A5_u8C03_u7528_u6216_u901A_u8FC7C_23_u7684_u59D4_u6258_u6765_u5B9E_u73B0" class="headerlink" title="9. 不要使用SendMessage之类的方法，他比直接调用方法慢了100倍，你可以直接调用或通过C#的委托来实现"></a>9. 不要使用SendMessage之类的方法，他比直接调用方法慢了100倍，你可以直接调用或通过C#的委托来实现</h4><h4 id="10-__u4F7F_u7528javascript_u6216Boo_u8BED_u8A00_u65F6_uFF0C_u4F60_u6700_u597D_u786E_u5B9A_u53D8_u91CF_u7684_u7C7B_u578B_uFF0C_u4E0D_u8981_u4F7F_u7528_u52A8_u6001_u7C7B_u578B_uFF0C_u8FD9_u6837_u4F1A_u964D_u4F4E_u6548_u7387_uFF0C_u4F60_u53EF_u4EE5_u5728_u811A_u672C_u5F00_u5934_u4F7F_u7528_23pragmastrict__u6765_u68C0_u67E5_uFF0C_u8FD9_u6837_u5F53_u4F60_u7F16_u8BD1_u4F60_u7684_u6E38_u620F_u65F6_u5C31_u4E0D_u4F1A_u51FA_u73B0_u83AB_u540D_u5176_u5999_u7684_u9519_u8BEF_u4E86"><a href="#10-__u4F7F_u7528javascript_u6216Boo_u8BED_u8A00_u65F6_uFF0C_u4F60_u6700_u597D_u786E_u5B9A_u53D8_u91CF_u7684_u7C7B_u578B_uFF0C_u4E0D_u8981_u4F7F_u7528_u52A8_u6001_u7C7B_u578B_uFF0C_u8FD9_u6837_u4F1A_u964D_u4F4E_u6548_u7387_uFF0C_u4F60_u53EF_u4EE5_u5728_u811A_u672C_u5F00_u5934_u4F7F_u7528_23pragmastrict__u6765_u68C0_u67E5_uFF0C_u8FD9_u6837_u5F53_u4F60_u7F16_u8BD1_u4F60_u7684_u6E38_u620F_u65F6_u5C31_u4E0D_u4F1A_u51FA_u73B0_u83AB_u540D_u5176_u5999_u7684_u9519_u8BEF_u4E86" class="headerlink" title="10. 使用javascript或Boo语言时，你最好确定变量的类型，不要使用动态类型，这样会降低效率，你可以在脚本开头使用#pragmastrict 来检查，这样当你编译你的游戏时就不会出现莫名其妙的错误了"></a>10. 使用javascript或Boo语言时，你最好确定变量的类型，不要使用动态类型，这样会降低效率，你可以在脚本开头使用#pragmastrict 来检查，这样当你编译你的游戏时就不会出现莫名其妙的错误了</h4><h4 id="11-__u534F_u540C_u662F_u4E00_u4E2A_u597D_u65B9_u6CD5_u3002_u53EF_u4EE5_u4F7F_u7528_u534F_u540C_u7A0B_u5E8F_u6765_u4EE3_u66FF_u4E0D_u5FC5_u6BCF_u5E27_u90FD_u6267_u884C_u7684_u65B9_u6CD5_u3002_uFF08_u8FD8_u6709InvokeRepeating_u65B9_u6CD5_u4E5F_u662F_u4E00_u4E2A_u597D_u7684_u53D6_u4EE3Update_u7684_u65B9_u6CD5_uFF09"><a href="#11-__u534F_u540C_u662F_u4E00_u4E2A_u597D_u65B9_u6CD5_u3002_u53EF_u4EE5_u4F7F_u7528_u534F_u540C_u7A0B_u5E8F_u6765_u4EE3_u66FF_u4E0D_u5FC5_u6BCF_u5E27_u90FD_u6267_u884C_u7684_u65B9_u6CD5_u3002_uFF08_u8FD8_u6709InvokeRepeating_u65B9_u6CD5_u4E5F_u662F_u4E00_u4E2A_u597D_u7684_u53D6_u4EE3Update_u7684_u65B9_u6CD5_uFF09" class="headerlink" title="11. 协同是一个好方法。可以使用协同程序来代替不必每帧都执行的方法。（还有InvokeRepeating方法也是一个好的取代Update的方法）"></a>11. 协同是一个好方法。可以使用协同程序来代替不必每帧都执行的方法。（还有InvokeRepeating方法也是一个好的取代Update的方法）</h4><h4 id="12-__u5F15_u7528_u4E00_u4E2A_u6E38_u620F_u5BF9_u8C61_u7684_u7EC4_u4EF6"><a href="#12-__u5F15_u7528_u4E00_u4E2A_u6E38_u620F_u5BF9_u8C61_u7684_u7EC4_u4EF6" class="headerlink" title="12. 引用一个游戏对象的组件"></a>12. 引用一个游戏对象的组件</h4><p>有人可能会这样写someGameObject.transform，gameObject.rigidbody.transform.gameObject.rigidbody.transform，但是这样做了一些不必要的工作，你可以在最开始的地方引用它，像这样：</p>
+<pre><code>private Transform myTrans;
+void Start()
+{
+    myTrans=someGameObject.transform;
+}
+</code></pre><h4 id="13-__u5173_u6389_u4E0D_u5FC5_u8981_u7684_u811A_u672C"><a href="#13-__u5173_u6389_u4E0D_u5FC5_u8981_u7684_u811A_u672C" class="headerlink" title="13. 关掉不必要的脚本"></a>13. 关掉不必要的脚本</h4><p>如果可能，将GameObject上不必要的脚本disable掉。如果你有一个大的场景在你的游戏中，并且敌方的位置在数千米意外，这是你可以disable你的敌方AI脚本直到它们接近摄像机为止。一个好的途径来开启或关闭GameObject是使用SetActiveRecursively(false），并且球形或盒型碰撞器设为trigger</p>
+<h4 id="14-__u5220_u9664_u7A7A_u7684Update_u65B9_u6CD5_u3002_u5F53_u901A_u8FC7Assets_u76EE_u5F55_u521B_u5EFA_u65B0_u7684_u811A_u672C_u65F6_uFF0C_u811A_u672C_u91CC_u4F1A_u5305_u62EC_u4E00_u4E2AUpdate_u65B9_u6CD5_uFF0C_u5F53_u4F60_u4E0D_u4F7F_u7528_u65F6_u5220_u9664_u5B83"><a href="#14-__u5220_u9664_u7A7A_u7684Update_u65B9_u6CD5_u3002_u5F53_u901A_u8FC7Assets_u76EE_u5F55_u521B_u5EFA_u65B0_u7684_u811A_u672C_u65F6_uFF0C_u811A_u672C_u91CC_u4F1A_u5305_u62EC_u4E00_u4E2AUpdate_u65B9_u6CD5_uFF0C_u5F53_u4F60_u4E0D_u4F7F_u7528_u65F6_u5220_u9664_u5B83" class="headerlink" title="14. 删除空的Update方法。当通过Assets目录创建新的脚本时，脚本里会包括一个Update方法，当你不使用时删除它"></a>14. 删除空的Update方法。当通过Assets目录创建新的脚本时，脚本里会包括一个Update方法，当你不使用时删除它</h4><h4 id="Unity3d_u7684_u4E00_u4E9B_u5C0F_u7A8D_u95E8"><a href="#Unity3d_u7684_u4E00_u4E9B_u5C0F_u7A8D_u95E8" class="headerlink" title="- Unity3d的一些小窍门"></a>- Unity3d的一些小窍门</h4><p>防止黑屏<br>In script change iPhoneSettings.screenCanDarken to false. This basically does the same as:<br>//Objective-C call [UIApplication sharedApplication].idleTimerDisabled = YES;<br>It prevents the auto lock on iPhone to kick-in.<br>参考：</p>
+<p>1.<a href="http://www.cnblogs.com/veboys/p/4091527.html" target="_blank" rel="external">http://www.cnblogs.com/veboys/p/4091527.html</a></p>
+<p>2.<a href="http://forum.china.unity3d.com/thread-570-1-1.html" target="_blank" rel="external">http://forum.china.unity3d.com/thread-570-1-1.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellogavin88.github.io/2015/04/10/2015-4-10-Unity-Optimize/" data-id="ciizrex1g000594vm1p5cv9u3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/">Unity</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-4-7-Unity-Base" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/07/2015-4-7-Unity-Base/" class="article-date">
+  <time datetime="2015-04-07T07:20:00.000Z" itemprop="datePublished">2015-04-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/unity/">unity</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/07/2015-4-7-Unity-Base/">Unity中基础知识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-_QWER_28LOL_29"><a href="#1-_QWER_28LOL_29" class="headerlink" title="1. QWER(LOL)"></a>1. QWER(LOL)</h4><ul>
+<li><p>Q（手性工具）1.拖拽场景 2.按住alt，旋转场景 3.鼠标滚轮缩放场景</p>
+</li>
+<li><p>W（平移工具）蓝色Z轴   绿色Y轴   红色X轴</p>
+</li>
+<li><p>E（旋转工具） 红绿蓝分别沿XYZ轴旋转</p>
+</li>
+<li><p>R（缩放工具） 红绿蓝分别缩放某一轴，黄色小方块缩放整体</p>
+</li>
+</ul>
+<h4 id="2-__u5149_u6E90"><a href="#2-__u5149_u6E90" class="headerlink" title="2. 光源"></a>2. 光源</h4><ul>
+<li><p>点光源：照亮某一区域，有层次感</p>
+</li>
+<li><p>方向光：照亮整体区域 ，无层次感</p>
+</li>
+<li><p>聚光灯：凸显某块区域 ，范围较小</p>
+</li>
+</ul>
+<h4 id="3-__u9884_u8BBE_uFF08prefab_uFF09"><a href="#3-__u9884_u8BBE_uFF08prefab_uFF09" class="headerlink" title="3. 预设（prefab）"></a>3. 预设（prefab）</h4><p>具有相同属性的物体抽象出来的一个模板，可以用面向对象中的基类来解释，把重复使用的物体作为预制件大大方便了以后的改动。<br>拖动物体到空预设即可创建预设</p>
+<pre><code>GameObject thePrefab;
+public void Start()
+{
+   GameObject instance = Instantiate(thePrefab,transform,position,transform,rotation);
+}
+</code></pre><h4 id="4-__u91CD_u529B_3D_u6DFB_u52A0_u521A_u4F53_u7EC4_u4EF6"><a href="#4-__u91CD_u529B_3D_u6DFB_u52A0_u521A_u4F53_u7EC4_u4EF6" class="headerlink" title="4. 重力=添加刚体组件"></a>4. 重力=添加刚体组件</h4><h4 id="5-__u7B80_u5355_u8BA1_u65F6_u5668"><a href="#5-__u7B80_u5355_u8BA1_u65F6_u5668" class="headerlink" title="5. 简单计时器"></a>5. 简单计时器</h4><pre><code>private Single myTimer = 5.0f;
+public void Update()
+{
+    myTimer -= Time.deltaTime;//上一帧的延时
+    if (myTimer &lt;= 0)
+        Debug.log(&quot;game over！&quot;);
+}
+</code></pre><h4 id="6-__u6750_u8D28"><a href="#6-__u6750_u8D28" class="headerlink" title="6. 材质"></a>6. 材质</h4><p>工程面板创建一个material原件，将图片资源拖到此组件上，生成材质原件，将材质拖动到需要改变材质的物体上（其实可以直接拖图片到物体上，但是这样就无法设置平铺参数）</p>
+<h4 id="7-__u79FB_u52A8_u7269_u4F53"><a href="#7-__u79FB_u52A8_u7269_u4F53" class="headerlink" title="7. 移动物体"></a>7. 移动物体</h4><p>朝Y方向运动</p>
+<pre><code>Single speed = 1.0f;
+public void Update()
+{
+    transform.Translate(new Vector3(0, 0, speed) * Time.deltaTime);
+}
+</code></pre><h4 id="8-__u8F93_u5165_u68C0_u6D4B"><a href="#8-__u8F93_u5165_u68C0_u6D4B" class="headerlink" title="8. 输入检测"></a>8. 输入检测</h4><p>Update函数中输入</p>
+<pre><code>if(Input.GetButtonUp(&quot;Jump&quot;))
+{
+    Debug.log(&quot;Space is hit&quot;);
+}
+</code></pre><h4 id="9-__u9500_u6BC1_u7269_u4F53"><a href="#9-__u9500_u6BC1_u7269_u4F53" class="headerlink" title="9. 销毁物体"></a>9. 销毁物体</h4><p>载入3秒后销毁名为box的物体，如果销毁自己则为Destroy(gameObject,3)即可</p>
+<pre><code>Destroy(gameObject.find(&apos;box&apos;),3);
+</code></pre><h4 id="10-__u65BD_u52A0_u5916_u529B_28_u82E5_u8981_u6052_u529B_uFF0C_u4E5F_u53EF_u4EE5_u5199_u5728update__u6216_u8005_u6309_u952E_u54CD_u5E94_u4E2D_29"><a href="#10-__u65BD_u52A0_u5916_u529B_28_u82E5_u8981_u6052_u529B_uFF0C_u4E5F_u53EF_u4EE5_u5199_u5728update__u6216_u8005_u6309_u952E_u54CD_u5E94_u4E2D_29" class="headerlink" title="10. 施加外力(若要恒力，也可以写在update 或者按键响应中)"></a>10. 施加外力(若要恒力，也可以写在update 或者按键响应中)</h4><pre><code>public Single power = 50.0f;
+private Rigidbody rb;
+
+public void Start()
+{
+    rb = gameObject.GetComponent&lt;Rigidbody&gt;();
+    //载入时施加一次
+    rb.AddForce(Vector3(0,0,power));
+}
+</code></pre><p>参考：</p>
+<p>1.<a href="http://blog.csdn.net/zx84289061/article/details/19127119" target="_blank" rel="external">http://blog.csdn.net/zx84289061/article/details/19127119</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellogavin88.github.io/2015/04/07/2015-4-7-Unity-Base/" data-id="ciizrex0z000094vme1q2jzfk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity/">Unity</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2014-12-23-vs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/23/2014-12-23-vs/" class="article-date">
+  <time datetime="2014-12-23T05:20:00.000Z" itemprop="datePublished">2014-12-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/editor/">editor</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/23/2014-12-23-vs/">Visual Studio中的一些搜索技巧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###1. Ctrl + i - 渐进搜索</p>
+<p>大多数人都习惯在vs中使用 <strong>“Ctrl + F”</strong> 进行搜索，按下 <strong>“Ctrl + i”</strong> 直接输入要搜索的文字，继续按 <strong>“Ctrl + i”</strong> 会自动跳到下个符合条件的地方，按 <strong>“Ctrl + Shift + i”</strong> 可以反方向搜索，这样避免回溯。</p>
+<h4 id="2-_F3_u548CShift_+_F3__u2013_u4F7F_u7528_u4EE5_u524D_u7684_u5173_u952E_u5B57_u67E5_u627E"><a href="#2-_F3_u548CShift_+_F3__u2013_u4F7F_u7528_u4EE5_u524D_u7684_u5173_u952E_u5B57_u67E5_u627E" class="headerlink" title="2. F3和Shift + F3 –使用以前的关键字查找"></a>2. F3和Shift + F3 –使用以前的关键字查找</h4><p>按F3键可以让你重复上次的搜索， <strong>Shift + F3</strong> 可以使用 上次搜索关键字进行反向搜索</p>
+<h4 id="3-_Ctrl_+_F3_-__u641C_u7D22_u5F53_u524D_u9009_u62E9_u7684_u6587_u672C"><a href="#3-_Ctrl_+_F3_-__u641C_u7D22_u5F53_u524D_u9009_u62E9_u7684_u6587_u672C" class="headerlink" title="3. Ctrl + F3 - 搜索当前选择的文本"></a>3. Ctrl + F3 - 搜索当前选择的文本</h4><p><strong>Ctrl + Shift + F3</strong> 来进行反向搜索</p>
+<h4 id="4-_Ctrl_+_Shift_+_F__u2013__u5728_u89E3_u51B3_u65B9_u6848_u91CC_u641C_u7D22"><a href="#4-_Ctrl_+_Shift_+_F__u2013__u5728_u89E3_u51B3_u65B9_u6848_u91CC_u641C_u7D22" class="headerlink" title="4. Ctrl + Shift + F – 在解决方案里搜索"></a>4. Ctrl + Shift + F – 在解决方案里搜索</h4><h4 id="5-_Shift_+_F12__u2013_u67E5_u627E_u7528_u9014"><a href="#5-_Shift_+_F12__u2013_u67E5_u627E_u7528_u9014" class="headerlink" title="5. Shift + F12 –查找用途"></a>5. Shift + F12 –查找用途</h4><p>F12来“转到定义”</p>
+<h4 id="6-_Ctrl_+__u51CF_u53F7_u548CShift_+_Ctrl_+__u51CF_u53F7_u2013_u5411_u524D/_u5411_u540E_u5B9A_u4F4D"><a href="#6-_Ctrl_+__u51CF_u53F7_u548CShift_+_Ctrl_+__u51CF_u53F7_u2013_u5411_u524D/_u5411_u540E_u5B9A_u4F4D" class="headerlink" title="6. Ctrl + 减号和Shift + Ctrl + 减号–向前/向后定位"></a>6. Ctrl + 减号和Shift + Ctrl + 减号–向前/向后定位</h4><h4 id="7-_Ctrl_+_Alt_+_uFF08_u5411_u4E0B_u952E_uFF09-_u5B9A_u4F4D_u4E00_u4E2A_u6253_u5F00_u7684_u6587_u4EF6"><a href="#7-_Ctrl_+_Alt_+_uFF08_u5411_u4E0B_u952E_uFF09-_u5B9A_u4F4D_u4E00_u4E2A_u6253_u5F00_u7684_u6587_u4EF6" class="headerlink" title="7. Ctrl + Alt +（向下键）-定位一个打开的文件"></a>7. Ctrl + Alt +（向下键）-定位一个打开的文件</h4><p>*注：有些时候，vs里面的快捷键会和你本地的一些软件冲突</p>
+<p>参考：</p>
+<p>1.<a href="http://msdn.microsoft.com/zh-cn/gg232829" target="_blank" rel="external">http://msdn.microsoft.com/zh-cn/gg232829</a></p>
+<p>2.<a href="http://blogs.msdn.com/b/scottgu/archive/2011/10/08/visual-studio-1.aspx" target="_blank" rel="external">http://blogs.msdn.com/b/scottgu/archive/2011/10/08/visual-studio-1.aspx</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellogavin88.github.io/2014/12/23/2014-12-23-vs/" data-id="ciizrex1i000894vm3czyb7to" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDE/">IDE</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2014-12-22-string" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/22/2014-12-22-string/" class="article-date">
+  <time datetime="2014-12-22T09:00:00.000Z" itemprop="datePublished">2014-12-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/why/">why</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/22/2014-12-22-string/">string是引用类型还是值类型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Question： <strong>string</strong>是引用类型还是值类型？</p>
+<p>首先说明 <strong>string</strong> 是引用类型，特殊的引用类型。</p>
+<pre><code>class Class1   
+{   
+  static void StrChange(string str)   
+  {   
+    str = &quot;hello&quot;;   
+  }   
+
+  static void Main()   
+  {   
+    string str = &quot;123&quot;;//申明一个字符串   
+    StrChange(str);//调用方法   
+    Console.WriteLine(str);//输出字符串   
+  }   
+}  
+</code></pre><p>输出结果：”123”</p>
+<p>C#中string是特殊的引用类型，他的实例是只读的。怎么特殊呢：</p>
+<ul>
+<li><p>static void StrChange(string str) 是值传递</p>
+</li>
+<li><p>static void StrChange(ref string str) 是引用传递</p>
+</li>
+</ul>
+<p>对字符串做一些操作（比如大小写转换、+=），实际上是重新创建一个字符串，这也是为什么在做大量字符串拼接时要使用StringBuilder问不是+=。</p>
+<p>还有就是string和String有什么区别呢？ <strong>string</strong> 关键字是String的别名，跟object和Object一样。</p>
+<p>参考：</p>
+<p>1.<a href="http://developer.51cto.com/art/200908/147520.htm" target="_blank" rel="external">http://developer.51cto.com/art/200908/147520.htm</a></p>
+<p>2.<a href="http://msdn.microsoft.com/zh-cn/library/ms228362.aspx" target="_blank" rel="external">http://msdn.microsoft.com/zh-cn/library/ms228362.aspx</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellogavin88.github.io/2014/12/22/2014-12-22-string/" data-id="ciizrex1l000d94vmpzgrbmv4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/思考/">思考</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2014-12-18-boxing" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/18/2014-12-18-boxing/" class="article-date">
+  <time datetime="2014-12-18T08:41:00.000Z" itemprop="datePublished">2014-12-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/why/">why</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/18/2014-12-18-boxing/">为什么装箱拆箱有性能损失</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> <strong>装箱</strong>  值类型   –&gt; 引用类型</p>
+<p> <strong>拆箱</strong>  引用类型 –&gt; 值类型</p>
+<p>.Net的类型分为两种，一种是值类型(Value Type )，另一种是引用类型(Reference Type)。值类型数据是分配在栈中，而引用类型数据分配在堆上。</p>
+<p>例子：int i = 123; Object obj = (object)i;</p>
+<p>实际过程：</p>
+<p>第一步：新分配堆内存(大小为值类型实例大小加上一个方法表指针和一个SyncBlockIndex)。 </p>
+<p>第二步：将值类型的实例字段拷贝到新分配的内存中。 </p>
+<p>第三步：返回堆中新分配对象的地址。这个地址就是一个指向对象的引用了。</p>
+<p><img src="/../images/boxing/1.gif" alt="1"></p>
+<p>我们通过这种方式将一个值类型的i装箱为一个Object类型的 obj变量</p>
+<p>拆箱就是一个逆过程了,将一个Object 类型的o变量还原为int型的i变量,它进行了如下操作：</p>
+<ul>
+<li><p>环境须先判断堆栈上指向合法对象的地址，以及在对此对象向指定的类型进行转换时是否合法，如果不合法，就抛出异常；</p>
+</li>
+<li><p>当判断类型转换正确，就返回一个指向对象内的值的指针。</p>
+</li>
+</ul>
+<p>针对上面的合法性判断,有两点需要我们注意：</p>
+<ul>
+<li><p>包含已装箱的值类型的引用的变量如果为null，就抛出一个NullReferenceException异常。</p>
+</li>
+<li><p>如果引用指向的对象不是所要求的值类型的一个已装箱的实例，就抛出一个InvaildCastException异常</p>
+</li>
+</ul>
+<p>带来的影响:</p>
+<p>我们可以从两个方面考虑:一个就是对于堆的操作效率比较低；另一个就是对于堆上分配的内存资源，需要GC来回收，从而降低程序效率。</p>
+<p>显然，直观的来说.装箱时，生成的是全新的引用对象，这会有时间损耗，也就是造成效率降低。<br>当然我们也可以直观的看出, <strong>拆箱所带来的性能损失是远小于装箱所带来的损失的。</strong></p>
+<p>参考：</p>
+<p>1.<a href="http://www.cnblogs.com/Creator/archive/2011/03/20/1989220.html" target="_blank" rel="external">http://www.cnblogs.com/Creator/archive/2011/03/20/1989220.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellogavin88.github.io/2014/12/18/2014-12-18-boxing/" data-id="ciizrex1o000k94vmoe3uf8v2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能/">性能</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2014-12-18-Object" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/18/2014-12-18-Object/" class="article-date">
+  <time datetime="2014-12-18T07:00:00.000Z" itemprop="datePublished">2014-12-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/why/">why</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/18/2014-12-18-Object/">为什么值类型不是引用类型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Question：既然值类型是继承自 <strong>Object</strong>，为什么它不是引用类型？</p>
+<p>值类型都是隐式派生自 <strong>ValueType</strong> 的（在没有明确定义的情况下，类自动继承 <strong>Object</strong>， <strong>struct</strong> 自动继承 <strong>ValueType</strong>）</p>
+<p>面向对象里有一句“万物皆对象”<br>（<a href="http://blogs.msdn.com/b/ericlippert/archive/2009/08/06/not-everything-derives-from-object.aspx" target="_blank" rel="external">这句话似乎也不完全对</a>），<br>但是 <strong>Object</strong> 是引用类型</p>
+<p>为什么 <strong>int</strong> 之类的值类型不是引用类型呢:</p>
+<p>值类型比如int都是 <strong>struct</strong>，这样声明的： <strong>public struct Int32 : IComparable, IFormattable, IConvertible</strong></p>
+<p><strong>ValueType</strong> 是抽象类，但是他的子类却都是值类型，这是因为 <strong>CLR对他的子类经过了特殊处理，CLR判断某类型继承自ValueType，那么他会在内存分配方面使它具有值类型的特性（直接分配在栈等）<br>编译器也经过了特殊处理，使值类型在诸多方面不同于类类型，比如我们不能声明一个类继承ValueType等</strong></p>
+<p>注：虽然值类型继承自 <strong>Obejct</strong>，但是值类型转成 <strong>Object</strong> 还是要 <strong>装箱</strong>。</p>
+<p>参考：</p>
+<p>1.<a href="http://www.cnblogs.com/jhxk/articles/2657489.html" target="_blank" rel="external">http://www.cnblogs.com/jhxk/articles/2657489.html</a></p>
+<p>2.<a href="http://stackoverflow.com/questions/1316626/does-every-type-in-net-inherit-from-system-object/1316632#1316632" target="_blank" rel="external">http://stackoverflow.com/questions/1316626/does-every-type-in-net-inherit-from-system-object/1316632#1316632</a></p>
+<p>3.<a href="http://www.cnblogs.com/c2303191/articles/1065675.html" target="_blank" rel="external">http://www.cnblogs.com/c2303191/articles/1065675.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellogavin88.github.io/2014/12/18/2014-12-18-Object/" data-id="ciizrex1s000p94vm8zm41blg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/思考/">思考</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2014-12-16-dowhile" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/16/2014-12-16-dowhile/" class="article-date">
+  <time datetime="2014-12-16T08:31:00.000Z" itemprop="datePublished">2014-12-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/reship-coding/">reship,coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/16/2014-12-16-dowhile/">do...while(0)的妙用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在C++中，有三种类型的循环语句：for, while, 和do…while， 但是在一般应用中作循环时， 我们可能用for和while要多一些，do…while相对不受重视。但是，最近在读我们项目的代码时，却发现了do…while的一些十分聪明的用法，不是用来做循环，而是用作其他来提高代码的健壮性。</p>
+<h4 id="1-_do_u2026while_280_29_u6D88_u9664goto_u8BED_u53E5_u3002"><a href="#1-_do_u2026while_280_29_u6D88_u9664goto_u8BED_u53E5_u3002" class="headerlink" title="1. do…while(0)消除goto语句。"></a>1. do…while(0)消除goto语句。</h4><p>通常，如果在一个函数中开始要分配一些资源，然后在中途执行过程中如果遇到错误则退出函数，当然，退出前先释放资源，我们的代码可能是这样：</p>
+<p>version 1</p>
+<pre><code>bool Execute()
+{
+// 分配资源
+int *p = new int;
+bool bOk(true);
+// 执行并进行错误处理
+bOk = func1();
+if(!bOk) 
+{
+  delete p;   
+  p = NULL;
+  return false;
+}
+bOk = func2();
+if(!bOk) 
+{
+  delete p;   
+  p = NULL;
+  return false;
+}
+bOk = func3();
+if(!bOk) 
+{
+  delete p;   
+  p = NULL;
+  return false;
+}
+// ..........
+// 执行成功，释放资源并返回
+delete p;   
+p = NULL;
+return true;
+}
+</code></pre><p>这里一个最大的问题就是代码的冗余，而且我每增加一个操作，就需要做相应的错误处理，非常不灵活。于是我们想到了goto:</p>
+<p>version 2</p>
+<pre><code>bool Execute()
+{
+// 分配资源
+int *p = new int;
+bool bOk(true);
+// 执行并进行错误处理
+bOk = func1();
+if(!bOk) goto errorhandle;
+bOk = func2();
+if(!bOk) goto errorhandle;
+bOk = func3();
+if(!bOk) goto errorhandle;
+// ..........
+// 执行成功，释放资源并返回
+delete p;   
+p = NULL;
+return true;
+errorhandle:
+    delete p;   
+    p = NULL;
+    return false;
+}
+</code></pre><p>代码冗余是消除了，但是我们引入了C++中身份比较微妙的goto语句，虽然正确的使用goto可以大大提高程序的灵活性与简洁性，但太灵活的东西往往是很危险的，它会让我们的程序捉摸不定，那么怎么才能避免使用goto语句，又能消除代码冗余呢，请看do…while(0)循环：</p>
+<p>version3</p>
+<pre><code>bool Execute()
+{
+   // 分配资源
+   int *p = new int;
+   bool bOk(true);
+   do
+   {
+      // 执行并进行错误处理
+      bOk = func1();
+      if(!bOk) break;
+
+      bOk = func2();
+      if(!bOk) break;
+
+      bOk = func3();
+      if(!bOk) break;
+
+      // ..........
+
+    }while(0);
+
+    // 释放资源
+    delete p;   
+    p = NULL;
+    return bOk;
+
+}
+</code></pre><p>“漂亮！”， 看代码就行了，啥都不用说了…</p>
+<h4 id="2-__u5B8F_u5B9A_u4E49_u4E2D_u7684do_u2026while_280_29"><a href="#2-__u5B8F_u5B9A_u4E49_u4E2D_u7684do_u2026while_280_29" class="headerlink" title="2. 宏定义中的do…while(0)"></a>2. 宏定义中的do…while(0)</h4><p>  如果你是C++程序员，我有理由相信你用过，或者接触过，至少听说过MFC, 在MFC的afx.h文件里面， 你会发现很多宏定义都是用了do…while(0)或do…while(false)， 比如说：<br>#define AFXASSUME(cond)       do { bool <strong>afx_condVal=!!(cond); ASSERT(</strong>afx_condVal); <strong>analysis_assume(</strong>afx_condVal); } while(0)<br>粗看我们就会觉得很奇怪，既然循环里面只执行了一次，我要这个看似多余的do…while(0)有什么意义呢？<br>当然有！<br>为了看起来更清晰，这里用一个简单点的宏来演示：<br>#define SAFE_DELETE(p) do{ delete p; p = NULL} while(0)<br>假设这里去掉do…while(0),<br>#define SAFE_DELETE(p) delete p; p = NULL;<br>那么以下代码：<br>if(NULL != p) SAFE_DELETE(p)<br>else   …do sth…<br>就有两个问题，<br>1) 因为if分支后有两个语句，else分支没有对应的if，编译失败<br>2) 假设没有else, SAFE_DELETE中的第二个语句无论if测试是否通过，会永远执行。<br>你可能发现，为了避免这两个问题，我不一定要用这个令人费解的do…while,  我直接用{}括起来就可以了<br>#define SAFE_DELETE(p) { delete p; p = NULL;}<br>的确，这样的话上面的问题是不存在了，但是我想对于C++程序员来讲，在每个语句后面加分号是一种约定俗成的习惯，这样的话，以下代码:<br>if(NULL != p) SAFE_DELETE(p);<br>else   …do sth…<br>其else分支就无法通过编译了（原因同上），所以采用do…while(0)是做好的选择了。</p>
+<p>也许你会说，我们代码的习惯是在每个判断后面加上{}, 就不会有这种问题了，也就不需要do…while了，如：</p>
+<pre><code>if(...) 
+{
+}
+else
+{
+}
+</code></pre><p>诚然，这是一个好的，应该提倡的编程习惯，但一般这样的宏都是作为library的一部分出现的，而对于一个library的作者，他所要做的就是让其库具有通用性，强壮性，因此他不能有任何对库的使用者的假设，如其编码规范，技术水平等。 </p>
+<p>我最擅长从零开始创造世界，所以从来不怕失败，它最多也就让我一无所有。</p>
+<p>原文链接：<a><a href="http://www.cnblogs.com/flying_bat/archive/2008/01/18/1044693.htm" target="_blank" rel="external">http://www.cnblogs.com/flying_bat/archive/2008/01/18/1044693.htm</a></a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellogavin88.github.io/2014/12/16/2014-12-16-dowhile/" data-id="ciizrex1u000s94vmelhkkqvv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/妙用/">妙用</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2014-12-15-10years" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/15/2014-12-15-10years/" class="article-date">
+  <time datetime="2014-12-15T03:41:00.000Z" itemprop="datePublished">2014-12-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/reship/">reship</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/15/2014-12-15-10years/">Teach Yourself Programming in Ten Years——用十年教会自己编程（节选）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作者：Peter Norvig </p>
+<p>译者：刘海粟 （做了些微的修改，估计是原作者改过了）</p>
+<p>本文原文为：<a href="http://norvig.com/21-days.html" target="_blank" rel="external">http://norvig.com/21-days.html</a> </p>
+<p>该翻译文档的PDF版可以在这里获得：<a href="http://download.csdn.net/source/2983778" target="_blank" rel="external">http://download.csdn.net/source/2983778</a> </p>
+<h4 id="1-__u4E3A_u4F55_u4E07_u4E8B_u90FD_u5982_u6B64_u6D6E_u8E81_uFF1F"><a href="#1-__u4E3A_u4F55_u4E07_u4E8B_u90FD_u5982_u6B64_u6D6E_u8E81_uFF1F" class="headerlink" title="1. 为何万事都如此浮躁？"></a>1. 为何万事都如此浮躁？</h4><p>随便走进一家书店，你就能看到 《<i>24小时学会Java</i>》（原文明明写的24小时，为什么所有人都翻译成7天，而且书里面也确实是分24小时来讲的）<br> 以及各种万变不离其宗的书籍，形如：在几天或者几小时内学会C、SQL、Ruby、Algorithms等等。<br>我在亚马逊 做了个高级搜索 ：<br>[ <a href="http://www.amazon.com/gp/search/ref=sr_adv_b/?search-alias=stripbooks&unfiltered=1&field-keywords=&field-author=&field-title=teach+yourself+hours&field-isbn=&field-publisher=&node=&field-p_n_condition-type=&field-feature_browse-bin=&field-subject=&field-language=&field-dateop=After&field-datemod=&field-dateyear=2000&sort=relevanceexprank&Adv-Srch-Books-Submit.x=16&Adv-Srch-Books-Submit.y=5" target="_blank" rel="external">title: teach, yourself, hours, since: 2000</a> ]<br> 共得到512本这样的书。<br>前10本中有9本是编程的书（其他的都是记账的），，我把搜索中的“教会自己”替换成“学习”或者“小时”替换成“天”得到的结果差不多，</p>
+<p>总结起来：要么是人们都在急匆匆的学习计算机，要么就是出于某种原因计算机比其他任何东西都要好学。<br>而没有一本书是关于如何在数日之内学会贝多芬或是量子力学甚至是狗的饲养的。Felleisen等人在《如何设计程序 》中也指出了这一趋势，<br>他们说：“糟糕的编程非常简单，蠢货都能在21天的时间内学会，即便他们就是根木头都可以！”<br>让我们来分析一下诸如《三天内学会C++ 》这样的标题意味着什么：</p>
+<ul>
+<li>学会： 3天的时间，你完全没有时间去完成一些大型程序，也无法从其中的成功与失败中汲取知识。你也没有时间和一个有经验的程序员一起工作并熟悉C++环境下的开发是个什么样子。<br>总之，你没有时间去深入的学习。所以这种书只能给你一个肤浅的认识而非深入的理解。正像Alexander Pope说的——一知半解是件危险的事情。 </li>
+<li>C++： 3天内你可能学会一些C++的语法(前提是你学过其他编程语言)，但你学不到如何去使用这种语言。总而言之，如果你是——比方说——一个Basic程序员，<br>你或许能学会以Basic的风格用C++语法编程，但你无法掌握C++真正的优点(或缺点)。问题何在？Alan Perlis 曾说过：“如果一种语言不能影响你的编程思路，<br>那就不值得学习。”唯一合理的解释就是你只需要学习一丁点的C++(类似的还有JavaScript或是Flash的Flex)以便为了某个特定目标而去连接一个现有工具的接口。<br>但如果这样，你就不是在学习如何编程，而仅仅是在学习如何完成你的目标而已。 </li>
+<li>三天内： 很不幸，正像我们在下一节中要展示的那样，这远远不够。 </li>
+</ul>
+<h4 id="2-_u7528_u5341_u5E74_u6559_u4F1A_u81EA_u5DF1_u7F16_u7A0B"><a href="#2-_u7528_u5341_u5E74_u6559_u4F1A_u81EA_u5DF1_u7F16_u7A0B" class="headerlink" title="2.用十年教会自己编程"></a>2.用十年教会自己编程</h4><p>  研究员们( <strong><em>Bloom (1985)</em></strong> , <strong><em>Bryan &amp; Harter (1899)</em></strong> , <strong><em>Hayes (1989)</em></strong> , <strong><em>Simmon &amp; Chase (1973)</em></strong> )已经指出在许多领域中想达到精通都需要花费十年左右的时间，<br>  这其中包括国际象棋、音乐创作、电报操作、绘画、钢琴演奏、游泳、网球以及对神经心理学或是拓扑学的研究。关键在于用心去练习：并非仅仅是一遍又一遍的单纯重复，<br>  而是要去挑战一个刚好高于你目前水平的目标。去尝试，并在做的时候以及完成后分析自己的表现，指出所有的错误。之后重复，再重复……这没有捷径：甚至是莫扎特——4岁时他就是个音乐神童了，<br>  但一样是用了13年的时间才创作出世界级的音乐。另一个例子，虽然看上去甲壳虫乐队是在1964年的埃德·沙利文秀上一夜走红的，但其实他们早在1957年就开始在利物浦和汉堡的小俱乐部中演出了，<br>  而且虽然很早就受到大众的青睐，但他们第一次重要的成功却是1967年发行的专辑——《Sgt. Peppers》。Malcolm Gladwell 公布了一份关于柏林音乐学院学生的研究报告，<br>  比较了优等、中等和后进的三类学生并为他们制定了练习时间：</p>
+<p>三组 人从几乎相同的年龄开始练习演奏——大约五岁左右。起初的几年中，每个人都练习几乎相同的时间——每周2到3个小时。但到了八岁左右的时候，真正的差距开 始出现了。<br>那些班中最优秀的学生的练习量开始超过其他人：九岁时达到每周6小时，十二岁时每周8小时，十四岁时每周16小时，越来越多。到了二十岁的时 候，他们每周的练习时间超过了30小时。<br>二十岁时，在精英演奏者的人生历程中共计练习了10,000小时。相较之下，仅仅是好学生的练习时间只有 8,000小时，而未来的音乐教师仅有4,000小时的练习。 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellogavin88.github.io/2014/12/15/2014-12-15-10years/" data-id="ciizrex1z000z94vm4geqjujt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/故事/">故事</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2014-12-11-whoesError" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/11/2014-12-11-whoesError/" class="article-date">
+  <time datetime="2014-12-11T06:26:00.000Z" itemprop="datePublished">2014-12-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/reship/">reship</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/11/2014-12-11-whoesError/">谁之错</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="u6545_u4E8B_u4E00_uFF1A"><a href="#u6545_u4E8B_u4E00_uFF1A" class="headerlink" title="故事一："></a>故事一：</h4><p>背景介绍：RT是一个外包公司，ZWZX是项目承接公司，YD是甲方。</p>
+<p>RT公司每天下班的时候都会接到ZWZX负责人的电话，询问一天的工作情况，然后布置任务要求晚上加班做完，RT公司的员工很无奈也很气愤因为每天都要加班，员工们就问项目经理：“为什么天天加班赶需求，今天才提一个需求，明天就要上线，还让不让人活了?” 项目经理无奈的说：“我有什么办法啊？这是人家ZWZX负责人说的啊，对方逼得紧。”</p>
+<p>多次以后项目经理也忍不住了，就问ZWZX的负责人怎么天天这样啊，ZWZX的负责人就说了:”明天就要向YD的负责人展示这个页面，我也没有办法啊？YD那边老总就是这么要求的，我怎么办，我也不想这样啊？”</p>
+<p>然后RT的项目经理实在受不了了就辞职了，新上任的项目经理又会走他的老路，因为从开始我们就被培养“满足客户的需求是最重要的”。RT的员工也就这样一直抱怨着，一直忍受着。天天在心里咒骂YD的老总真是没有人性，不拿人当人看啊！</p>
+<p>人换了一批又一批，加班也就慢慢的变成了应该的，你不加班说明你不敬业，不合格。</p>
+<h4 id="u6545_u4E8B_u4E8C_uFF1A"><a href="#u6545_u4E8B_u4E8C_uFF1A" class="headerlink" title="故事二："></a>故事二：</h4><p>IE6一直存活着，所有的前端开发人员都痛恨它，都不想兼容它，可是产品经理看到IE6的市场占有率还是这么高，就会要求前端开发人员必须兼容IE6。</p>
+<p>矛盾又来了，就像故事一一样，前端开发人员天天抱怨，产品经理也天天抱怨，但是面对IE6的市场份额，产品经理会劝开发人员说：“我有什么办法啊？IE6的市场份额就是这么高，不兼容怎么办啊？我也不想啊！” 开发人员也就这样忍受着，然后不断地抱怨用IE6的用户低端，没文化，怎么还用IE6啊！天天兼容IE6就够烦的了，还怎么创新啊！</p>
+<p>这两个故事里出现的问题到底是谁的错误引起的？</p>
+<p>故事一的罪魁祸首是YD的老总吗？</p>
+<p>故事二的罪魁祸首是那些还用着IE6的用户吗？</p>
+<h4 id="u4ECE_u8FD9_u4E24_u4E2A_u5ACC_u7591_u6700_u5927_u7684_u7F6A_u9B41_u7978_u9996_u773C_u4E2D_u770B_u4E00_u4E0B_u8FD9_u4E24_u4E2A_u6545_u4E8B_uFF1A"><a href="#u4ECE_u8FD9_u4E24_u4E2A_u5ACC_u7591_u6700_u5927_u7684_u7F6A_u9B41_u7978_u9996_u773C_u4E2D_u770B_u4E00_u4E0B_u8FD9_u4E24_u4E2A_u6545_u4E8B_uFF1A" class="headerlink" title="从这两个嫌疑最大的罪魁祸首眼中看一下这两个故事："></a>从这两个嫌疑最大的罪魁祸首眼中看一下这两个故事：</h4><h4 id="u6545_u4E8B_u4E00_uFF1A-1"><a href="#u6545_u4E8B_u4E00_uFF1A-1" class="headerlink" title="故事一："></a>故事一：</h4><p>我是YD的老总，我要建立一个网站，找到了ZWZX公司，签订了合同，我提需求他们实现。</p>
+<p>我不懂制作网站，可是我才思敏捷，创意无限，不停的会有好点子从我的脑海里蹦出来，每当有一个好点子蹦出来后，我都会给ZWZX公司的负责人讲清楚我的想法，让他实现，开始我不知道做一个页面需要多长时间。第一次我试探性的说了一周必须把我这个点子做出来，ZWZX公司负责人很痛快的答应了，一周后我果然看到了这个功能。</p>
+<p>可是会不会我给他们的时间太长了？对！肯定是，要不也不会答应的这么痛快。这些人啊！天天就是想拖时间，好多骗我点钱。</p>
+<p>点子又来了，这次我要求5天做出来，这个点子和上个点子类似，我倒要看看5天能不能做出来~ ZWZX公司负责人一副痛苦的表情，我会不会逼的太紧了，5天是不是真的做不出来？到时候看看吧，如果5天没做出来估计是我给的时间太少了。</p>
+<p>5天过去了ZWZX公司的负责人很高兴的拿出了我要的功能实现，哎，看来开始真的骗了我两天。就是不知道5天会不会还是多了啊？下次给3天~</p>
+<p>又拿出来了，虽然他装的好像时间太紧似的，可别以为我不知道，你第一个功能最多3天就做出来了，我还给了你7天的项目经费，你们多赚了我多少啊！！！！ 真是没良心。 下次1天！！！</p>
+<p>啊啊啊啊啊啊啊啊!!! 1天就出来了，这些人。。。。。 有没有良心，原来做这个这么简单，以后就给1天，不 ！ 一天N个功能。</p>
+<h4 id="u6545_u4E8B_u4E8C_uFF1A-1"><a href="#u6545_u4E8B_u4E8C_uFF1A-1" class="headerlink" title="故事二："></a>故事二：</h4><p>我买了个电脑，没什么别的用途，就是打开电脑上上网，上上QQ和儿子聊聊天，QQ是儿子给我装上的，这样我就可以和他视频了。有一次QQ提醒我说我的QQ版本太低了，不能视频了，我打电话问儿子，儿子说按提示升级一下QQ就行了，呵呵，我按QQ的提示，儿子的指示一步一步的升级QQ成功了，看来电脑也不难啊！</p>
+<h4 id="u5230_u8FD9_u91CC_u60A8_u8BA4_u4E3A_u5F00_u59CB_u7684_u4E24_u4E2A_u6545_u4E8B_u7684_u7F6A_u9B41_u7978_u9996_u662F_u8C01_u554A_uFF1F"><a href="#u5230_u8FD9_u91CC_u60A8_u8BA4_u4E3A_u5F00_u59CB_u7684_u4E24_u4E2A_u6545_u4E8B_u7684_u7F6A_u9B41_u7978_u9996_u662F_u8C01_u554A_uFF1F" class="headerlink" title="到这里您认为开始的两个故事的罪魁祸首是谁啊？"></a>到这里您认为开始的两个故事的罪魁祸首是谁啊？</h4><p>我们一直以加班，甚至通宵去满足客户不合理的要求，只因为他是客户。只因为人人都认为满足客户的要求是我们最大的 价值，可是不合理的要求不能去拒绝吗？套用刘欢说的一句话“我们是不是活的应该有些尊严”，一味的迎合客户，只会让我们自己越来越痛苦，反而得不到用户的尊重，肯定。</p>
+<p>我一直有个疑惑，很多人说网站不支持IE6，而选择让用户去升级IE，这样的用户体验不好！如果按照按照这个逻辑，是不是我们都应该是Web应用，而且都应该是IE6下的Web应用呢？为什么微软还要出WIN8，一直XP不是挺好的吗？让用户升级系统，用户体验多么不好啊？QQ，360，搜狗输入法，等等客户端软件用户体验不都不好吗？ 都还要用户下载。</p>
+<p>实在搞不懂为什么我们做个东西非要去支持IE6呢？检测到用户是IE6，给个提示，给个升级链接不就行了？ 这样做用户体验是有多么不好吗？ 你天天去支持IE6，还要天天磨叽用户使用IE6，你不觉的很矛盾吗？再说我一个普通用户，你如果不提醒，我怎么知道要升级IE6啊？</p>
+<h4 id="u5BF9_u4E8E_u906D_u9047_u4E86_u6545_u4E8B_u4E00_uFF0C_u6545_u4E8B_u4E8C_u7684_u4EBA_u53EA_u80FD_u9001_u4E0A_u4E00_u53E5_u8BDD_u201C_u54C0_u5176_u4E0D_u5E78_uFF0C_u6012_u5176_u4E0D_u4E89_uFF01_u201D"><a href="#u5BF9_u4E8E_u906D_u9047_u4E86_u6545_u4E8B_u4E00_uFF0C_u6545_u4E8B_u4E8C_u7684_u4EBA_u53EA_u80FD_u9001_u4E0A_u4E00_u53E5_u8BDD_u201C_u54C0_u5176_u4E0D_u5E78_uFF0C_u6012_u5176_u4E0D_u4E89_uFF01_u201D" class="headerlink" title="对于遭遇了故事一，故事二的人只能送上一句话“哀其不幸，怒其不争！”"></a>对于遭遇了故事一，故事二的人只能送上一句话“哀其不幸，怒其不争！”</h4><p>原文链接：<a href="http://hfcc8685.github.com/blog/2012/04/19/shui-zhi-cuo/" target="_blank" rel="external">http://hfcc8685.github.com/blog/2012/04/19/shui-zhi-cuo/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellogavin88.github.io/2014/12/11/2014-12-11-whoesError/" data-id="ciizrex21001494vm2ds3aihg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/故事/">故事</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2014-12-11-CsharpName" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/11/2014-12-11-CsharpName/" class="article-date">
+  <time datetime="2014-12-11T06:26:00.000Z" itemprop="datePublished">2014-12-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/coding/">coding</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/11/2014-12-11-CsharpName/">C#命名规则</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-__u7528Pascal_u89C4_u5219_u6765_u547D_u540D_u65B9_u6CD5_u548C_u7C7B_u3002"><a href="#1-__u7528Pascal_u89C4_u5219_u6765_u547D_u540D_u65B9_u6CD5_u548C_u7C7B_u3002" class="headerlink" title="1. 用Pascal规则来命名方法和类。"></a>1. 用Pascal规则来命名方法和类。</h4><pre><code>public class DataGrid 
+{ 
+  public void DataBind() 
+  { 
+  } 
+} 
+</code></pre><h4 id="2-_private_u3001protected_u4EE5_u53CA_u65B9_u6CD5_u53C2_u6570_u4F7F_u7528_Camel_uFF0Cpublic_u4F7F_u7528Pascal_28_u53D8_u91CF_u5C3D_u91CF_u4F7F_u7528_u5C5E_u6027_29"><a href="#2-_private_u3001protected_u4EE5_u53CA_u65B9_u6CD5_u53C2_u6570_u4F7F_u7528_Camel_uFF0Cpublic_u4F7F_u7528Pascal_28_u53D8_u91CF_u5C3D_u91CF_u4F7F_u7528_u5C5E_u6027_29" class="headerlink" title="2. private、protected以及方法参数使用 Camel，public使用Pascal(变量尽量使用属性)."></a>2. private、protected以及方法参数使用 Camel，public使用Pascal(变量尽量使用属性).</h4><pre><code>public class Product 
+{ 
+  public string ProductUrl;
+  private string _productId; 
+  protected string _productName; 
+  public void AddProduct(string productId,string productName) 
+  { 
+  } 
+} 
+</code></pre><h4 id="3-__u63A5_u53E3_u7684_u540D_u79F0_u52A0_u524D_u7F00__u201CI_u201D_u3002"><a href="#3-__u63A5_u53E3_u7684_u540D_u79F0_u52A0_u524D_u7F00__u201CI_u201D_u3002" class="headerlink" title="3. 接口的名称加前缀 “I”。"></a>3. 接口的名称加前缀 “I”。</h4><pre><code>public interface IConvertible 
+{ 
+  byte ToByte(); 
+} 
+</code></pre><h4 id="4-__u65B9_u6CD5_u6CE8_u91CA///"><a href="#4-__u65B9_u6CD5_u6CE8_u91CA///" class="headerlink" title="4. 方法注释///"></a>4. 方法注释///</h4><pre><code>/// &lt;summary&gt;
+/// 
+/// &lt;/summary&gt;
+</code></pre><h4 id="5-__u81EA_u5B9A_u4E49_u7684_u5C5E_u6027_u4EE5_u201CAttribute_u201D_u7ED3_u5C3E_u3002"><a href="#5-__u81EA_u5B9A_u4E49_u7684_u5C5E_u6027_u4EE5_u201CAttribute_u201D_u7ED3_u5C3E_u3002" class="headerlink" title="5. 自定义的属性以“Attribute”结尾。"></a>5. 自定义的属性以“Attribute”结尾。</h4><pre><code>public class TableAttribute:Attribute 
+{ 
+} 
+</code></pre><h4 id="6-__u81EA_u5B9A_u4E49_u7684_u5F02_u5E38_u4EE5Exception_u7ED3_u5C3E_u3002"><a href="#6-__u81EA_u5B9A_u4E49_u7684_u5F02_u5E38_u4EE5Exception_u7ED3_u5C3E_u3002" class="headerlink" title="6. 自定义的异常以Exception结尾。"></a>6. 自定义的异常以Exception结尾。</h4><pre><code>public class NullEmptyException:Exception 
+{ 
+} 
+</code></pre><h4 id="7-__u65B9_u6CD5_u7684_u547D_u540D_u3002_u4E00_u822C_u5C06_u5176_u547D_u540D_u4E3A_u52A8_u5BBE_u77ED_u8BED_u3002"><a href="#7-__u65B9_u6CD5_u7684_u547D_u540D_u3002_u4E00_u822C_u5C06_u5176_u547D_u540D_u4E3A_u52A8_u5BBE_u77ED_u8BED_u3002" class="headerlink" title="7. 方法的命名。一般将其命名为动宾短语。"></a>7. 方法的命名。一般将其命名为动宾短语。</h4><pre><code>public class File 
+{ 
+  public void CreateFile(string filePath) 
+  { 
+  } 
+  public void GetPath(string path) 
+  { 
+  } 
+} 
+</code></pre><h4 id="8-__u5C40_u90E8_u53D8_u91CF_u7684_u540D_u79F0_u8981_u6709_u610F_u4E49_u3002__u4E0D_u8981_u7528x_uFF0Cy_uFF0Cz_u7B49_u7B49_uFF0C_u7528For_u5FAA_u73AF_u53D8_u91CF_u4E2D_u53EF_u4F7F_u7528i_2C_j_2C_k_2C_l_2C_m_2C_n_u3002"><a href="#8-__u5C40_u90E8_u53D8_u91CF_u7684_u540D_u79F0_u8981_u6709_u610F_u4E49_u3002__u4E0D_u8981_u7528x_uFF0Cy_uFF0Cz_u7B49_u7B49_uFF0C_u7528For_u5FAA_u73AF_u53D8_u91CF_u4E2D_u53EF_u4F7F_u7528i_2C_j_2C_k_2C_l_2C_m_2C_n_u3002" class="headerlink" title="8. 局部变量的名称要有意义。 不要用x，y，z等等，用For循环变量中可使用i, j, k, l, m, n。"></a>8. 局部变量的名称要有意义。 不要用x，y，z等等，用For循环变量中可使用i, j, k, l, m, n。</h4><pre><code>public class User 
+{ 
+  public void GetUser() 
+  { 
+    string[] userIds={&quot;ziv&quot;,&quot;zorywa&quot;,&quot;zlh&quot;}; 
+    for(int i=0,k=userIds.Length;i&lt;k;i++) 
+    { 
+    } 
+  } 
+} 
+</code></pre><h4 id="9-__u6240_u6709_u7684_u6210_u5458_u53D8_u91CF_u58F0_u660E_u5728_u7C7B_u7684_u9876_u7AEF_u3002"><a href="#9-__u6240_u6709_u7684_u6210_u5458_u53D8_u91CF_u58F0_u660E_u5728_u7C7B_u7684_u9876_u7AEF_u3002" class="headerlink" title="9. 所有的成员变量声明在类的顶端。"></a>9. 所有的成员变量声明在类的顶端。</h4><pre><code>public class Product 
+{ 
+  private string _productId; 
+  private string _productName; 
+  public void AddProduct(string productId,string productName) 
+  { 
+  } 
+} 
+</code></pre><h4 id="10-__u7528_u6709_u610F_u4E49_u7684_u540D_u5B57_u547D_u540Dnamespace_uFF0C_u5982_uFF1A_u516C_u53F8_u540D_u3001_u4EA7_u54C1_u540D_u3002"><a href="#10-__u7528_u6709_u610F_u4E49_u7684_u540D_u5B57_u547D_u540Dnamespace_uFF0C_u5982_uFF1A_u516C_u53F8_u540D_u3001_u4EA7_u54C1_u540D_u3002" class="headerlink" title="10. 用有意义的名字命名namespace，如：公司名、产品名。"></a>10. 用有意义的名字命名namespace，如：公司名、产品名。</h4><pre><code>namespace Zivsoft//公司命名 
+{ 
+} 
+namespace ERP//产品命名 
+{ 
+} 
+</code></pre><h4 id="11_uFF0E__u5EFA_u8BAE_u5C40_u90E8_u53D8_u91CF_u5728_u6700_u63A5_u8FD1_u4F7F_u7528_u5B83_u65F6_u518D_u58F0_u660E_u3002"><a href="#11_uFF0E__u5EFA_u8BAE_u5C40_u90E8_u53D8_u91CF_u5728_u6700_u63A5_u8FD1_u4F7F_u7528_u5B83_u65F6_u518D_u58F0_u660E_u3002" class="headerlink" title="11． 建议局部变量在最接近使用它时再声明。"></a>11． 建议局部变量在最接近使用它时再声明。</h4><h4 id="12-__u4F7F_u7528_u67D0_u4E2A_u63A7_u4EF6_u7684_u503C_u65F6_uFF0C_u5C3D_u91CF_u547D_u540D_u5C40_u90E8_u53D8_u91CF_u3002"><a href="#12-__u4F7F_u7528_u67D0_u4E2A_u63A7_u4EF6_u7684_u503C_u65F6_uFF0C_u5C3D_u91CF_u547D_u540D_u5C40_u90E8_u53D8_u91CF_u3002" class="headerlink" title="12. 使用某个控件的值时，尽量命名局部变量。"></a>12. 使用某个控件的值时，尽量命名局部变量。</h4><pre><code>public string GetTitle() 
+{ 
+  string title=lbl_Title.Text; 
+  return title; 
+} 
+</code></pre><h4 id="14-__u628A_u5F15_u7528_u7684_u7CFB_u7EDF_u7684namespace_u548C_u81EA_u5B9A_u4E49_u6216_u7B2C_u4E09_u65B9_u7684_u7528_u4E00_u4E2A_u6362_u884C_u628A_u5B83_u4EEC_u5206_u5F00_u3002"><a href="#14-__u628A_u5F15_u7528_u7684_u7CFB_u7EDF_u7684namespace_u548C_u81EA_u5B9A_u4E49_u6216_u7B2C_u4E09_u65B9_u7684_u7528_u4E00_u4E2A_u6362_u884C_u628A_u5B83_u4EEC_u5206_u5F00_u3002" class="headerlink" title="14. 把引用的系统的namespace和自定义或第三方的用一个换行把它们分开。"></a>14. 把引用的系统的namespace和自定义或第三方的用一个换行把它们分开。</h4><pre><code>using System; 
+using System.Web.UI; 
+using System.Windows.Forms; 
+using CSharpCode; 
+using CSharpCode.Style; 
+</code></pre><h4 id="15-__u6587_u4EF6_u540D_u8981_u80FD_u53CD_u5E94_u7C7B_u7684_u5185_u5BB9_uFF0C_u6700_u597D_u662F_u548C_u7C7B_u540C_u540D_uFF0C_u4E00_u4E2A_u6587_u4EF6_u4E2D_u4E00_u4E2A_u7C7B_u6216_u4E00_u7EC4_u5173_u8FDE_u7C7B_u3002"><a href="#15-__u6587_u4EF6_u540D_u8981_u80FD_u53CD_u5E94_u7C7B_u7684_u5185_u5BB9_uFF0C_u6700_u597D_u662F_u548C_u7C7B_u540C_u540D_uFF0C_u4E00_u4E2A_u6587_u4EF6_u4E2D_u4E00_u4E2A_u7C7B_u6216_u4E00_u7EC4_u5173_u8FDE_u7C7B_u3002" class="headerlink" title="15. 文件名要能反应类的内容，最好是和类同名，一个文件中一个类或一组关连类。"></a>15. 文件名要能反应类的内容，最好是和类同名，一个文件中一个类或一组关连类。</h4><h4 id="16-__u76EE_u5F55_u7ED3_u6784_u4E2D_u8981_u53CD_u5E94_u51FAnamespace_u7684_u5C42_u6B21_u3002"><a href="#16-__u76EE_u5F55_u7ED3_u6784_u4E2D_u8981_u53CD_u5E94_u51FAnamespace_u7684_u5C42_u6B21_u3002" class="headerlink" title="16. 目录结构中要反应出namespace的层次。"></a>16. 目录结构中要反应出namespace的层次。</h4><h4 id="17-__u5927_u62EC_u53F7_u201D_7B_u201C_u8981_u65B0_u8D77_u4E00_u884C_u3002"><a href="#17-__u5927_u62EC_u53F7_u201D_7B_u201C_u8981_u65B0_u8D77_u4E00_u884C_u3002" class="headerlink" title="17. 大括号”{“要新起一行。"></a>17. 大括号”{“要新起一行。</h4><pre><code>public Sample() 
+{ 
+// 
+// TODO: 在此处添加构造函数逻辑 
+// 
+}
+</code></pre><h4 id="18-__u4EE3_u7801_u5757_u63A7_u5236__23region__23endregion"><a href="#18-__u4EE3_u7801_u5757_u63A7_u5236__23region__23endregion" class="headerlink" title="18. 代码块控制 #region  #endregion"></a>18. 代码块控制 #region  #endregion</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellogavin88.github.io/2014/12/11/2014-12-11-CsharpName/" data-id="ciizrex26001b94vm2e8hpe2a" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C#</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/规范/">规范</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/coding/">coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/editor/">editor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reship/">reship</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reship-coding/">reship,coding</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/unity/">unity</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/why/">why</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C#</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDE/">IDE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/">Unity</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity插件/">Unity插件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/妙用/">妙用</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/思考/">思考</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能/">性能</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/故事/">故事</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/规范/">规范</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 20px;">C#</a> <a href="/tags/IDE/" style="font-size: 10px;">IDE</a> <a href="/tags/Unity/" style="font-size: 15px;">Unity</a> <a href="/tags/Unity插件/" style="font-size: 10px;">Unity插件</a> <a href="/tags/妙用/" style="font-size: 10px;">妙用</a> <a href="/tags/思考/" style="font-size: 15px;">思考</a> <a href="/tags/性能/" style="font-size: 10px;">性能</a> <a href="/tags/故事/" style="font-size: 15px;">故事</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/规范/" style="font-size: 10px;">规范</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">9</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/04/10/2015-4-10-Unity-Optimize/">Unity项目优化</a>
+          </li>
+        
+          <li>
+            <a href="/2015/04/07/2015-4-7-Unity-Base/">Unity中基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/23/2014-12-23-vs/">Visual Studio中的一些搜索技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/22/2014-12-22-string/">string是引用类型还是值类型</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/18/2014-12-18-boxing/">为什么装箱拆箱有性能损失</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
