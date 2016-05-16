@@ -1,1 +1,0 @@
-mklink /D C:\TestFolder C:\Users\Geek\TestFolder
