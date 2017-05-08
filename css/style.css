@@ -882,6 +882,7 @@ span.date h3 {
 .copyright p {
   font-size: 1em;
   color: #fff;
+  text-align: center;
 }
 .copyright p a {
   color: #d52685;
