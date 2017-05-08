@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FlashXml>
+<input1 type="text" title="新郞" alt="">郑雪松</input1>
+<input2 type="text" title="新娘" alt="">江慧玲</input2>
+<input3 type="text" title="婚宴时间" alt="">2015年2月14日12点</input3>
+<input4 type="text" title="婚宴地点" alt="">上饶市余干县禾山</input4>
+<input5 type="pic" title="结婚照一" alt="宽度：800 高度：400" width="800" height="400">img/1.jpg</input5>
+<input6 type="pic" title="结婚照二" alt="宽度：800 高度：400" width="800" height="400">img/2.jpg</input6>
+<input7 type="pic" title="结婚照三" alt="宽度：800 高度：400" width="800" height="400">img/3.jpg</input7>
+<input8 type="pic" title="结婚照四" alt="宽度：800 高度：400" width="800" height="400">img/4.jpg</input8>
+<input9 type="pic" title="结婚照五" alt="宽度：800 高度：400" width="800" height="400">img/5.jpg</input9>
+<input6 type="pic" title="结婚照二" alt="宽度：800 高度：400" width="800" height="400">img/6.jpg</input6>
+<input7 type="pic" title="结婚照三" alt="宽度：800 高度：400" width="800" height="400">img/7.jpg</input7>
+<input8 type="pic" title="结婚照四" alt="宽度：800 高度：400" width="800" height="400">img/8.jpg</input8>
+<input9 type="pic" title="结婚照五" alt="宽度：800 高度：400" width="800" height="400">img/9.jpg</input9>
+<input10 type="music" title="背景音乐" alt="支持网络地址，如http://www.eka777.com/upload/musica/love.mp3，必须为
+mp3文件">Shine.mp3</input10>
+<input11 type="map" title="地图链接" alt="百度地图标注参考：http://dzqjw.com/GroupBoardInfo.aspx?id=34101"><![CDATA[http://www.google.cn/maps/place/江西省上饶市余干县禾山乡/@28.5944116,116.557855,15z/data=!4m2!3m1!1s0x343a642ba7cb57ef:0x16335a01d250033d]]></input11>
+<input12 type="pic" title="地图图片" alt="宽度：800高度:800,如果为空则直接打开上面链接" width="800" height="800">map.jpg</input12>
+<input>章为忠</input>
+<input>梁志康</input>
+<input>吕珊珊</input>
+<input>戴媛</input>
+<input>刘强</input>
+<input>王武</input>
+<input>陈志权</input>
+<input>丁俊</input>
+<input>何玮婧 </input>
+<input>宋长刚</input>
+<input>成艺</input>
+<input>孙祥燕</input>
+<input>裴晓丽</input>
+<input>盛侃侃</input>
+<input>郑略略</input>
+<input>丁险</input>
+<input>陈澄</input>
+<input>余美蓉</input>
+<input>余舒正</input>
+</FlashXml>
