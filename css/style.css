@@ -132,6 +132,18 @@ ul.bann-icons li a.g {
   background-position: -68px 0px;
   opacity: 1.0;
 }
+ul.bann-icons li a.wx {
+  background-position: -102px 0px;
+  opacity: 1.0;
+}
+ul.bann-icons li a.qq {
+  background-position: -136px 0px;
+  opacity: 1.0;
+}
+ul.bann-icons li a.tb {
+  background-position: -170px 0px;
+  opacity: 1.0;
+}
 ul.bann-icons li a:hover {
    opacity: 0.4;
 }
