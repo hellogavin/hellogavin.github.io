@@ -1024,7 +1024,7 @@ ul.res  a:hover,ul.res li a.active{
 	color:#000;
 }
 .header-main {
-  height: 210px;
+  height: 110px;
   width: 100%;
   padding:0.5em 1em;
 }
@@ -1194,7 +1194,7 @@ ul.bann-icons {
   padding: 1em 0em 0em 0em;
 }
 .header-main {
-  height: 120px;
+  height: 100px;
 }
 figure.effect-bubba p {
   font-size: 0.75em;
