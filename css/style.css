@@ -932,7 +932,7 @@ span.date h3 {
 @media(max-width:1024px){
 .header-main {
   height: 620px;
-   width: 17%;	
+   width: 20%;	
 }
 .banner {
   min-height: 620px;
@@ -1194,7 +1194,7 @@ ul.bann-icons {
   padding: 1em 0em 0em 0em;
 }
 .header-main {
-  height: 100px;
+  height: 200px;
 }
 figure.effect-bubba p {
   font-size: 0.75em;
